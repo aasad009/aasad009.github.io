@@ -627,6 +627,8 @@
 
     .award-image {
       position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       border-radius: 18px;
       border: 1px solid var(--line);
@@ -636,9 +638,9 @@
 
     .award-image img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: 0% 50%;
       transition: transform 240ms ease;
     }
 
@@ -1072,7 +1074,7 @@
               Quantifying the information content of loading conditions and selecting
               deformations that improve multiparameter hyperelastic identifiability.
             </p>
-            <a class="card-link" href="#publications">Related publication →</a>
+            <a class="card-link" href="https://doi.org/10.1016/j.jmbbm.2025.107104" target="_blank" rel="noopener noreferrer" aria-label="Read the optimal experimental design paper on its DOI page">JMBBM paper →</a>
           </article>
 
           <article class="card research-card">
