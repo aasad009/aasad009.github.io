@@ -578,6 +578,34 @@
       white-space: nowrap;
     }
 
+    .publication-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .publication h3 a {
+      color: inherit;
+    }
+
+    .publication h3 a:hover,
+    .publication h3 a:focus-visible {
+      color: #b9dcff;
+    }
+
+    .pill.primary-link {
+      border-color: rgba(126, 224, 210, 0.32);
+      background: rgba(126, 224, 210, 0.08);
+      color: #c8fff7;
+    }
+
+    @media (max-width: 900px) {
+      .publication-actions {
+        justify-content: flex-start;
+      }
+    }
+
     .news-list {
       display: grid;
       gap: 14px;
@@ -1074,7 +1102,7 @@
               Quantifying the information content of loading conditions and selecting
               deformations that improve multiparameter hyperelastic identifiability.
             </p>
-            <a class="card-link" href="https://doi.org/10.1016/j.jmbbm.2025.107104" target="_blank" rel="noopener noreferrer" aria-label="Read the optimal experimental design paper on its DOI page">JMBBM paper →</a>
+            <a class="card-link" href="/publications/optimal-experimental-design/">Paper page →</a>
           </article>
 
           <article class="card research-card">
@@ -1110,7 +1138,7 @@
               Recovering voxel-wise nonlinear material parameters from volumetric
               deformation fields while enforcing equilibrium and boundary reactions.
             </p>
-            <a class="card-link" href="https://doi.org/10.1007/s10439-026-04321-4" target="_blank" rel="noopener noreferrer">PI-UNet paper →</a>
+            <a class="card-link" href="/publications/pi-unet/">Paper page →</a>
           </article>
 
           <article class="card research-card">
@@ -1165,19 +1193,33 @@
           <article class="publication">
             <div class="pub-year">2026</div>
             <div>
-              <h3>Stress-Constrained Physics-Informed UNet for Voxel-Wise Multiparameter Hyperelastic Inversion in Volumetric Medical Imaging</h3>
+              <h3>
+                <a href="/publications/pi-unet/">
+                  Stress-Constrained Physics-Informed UNet for Voxel-Wise Multiparameter Hyperelastic Inversion in Volumetric Medical Imaging
+                </a>
+              </h3>
               <p>Amirreza Asadi and Kaveh Laksari · Annals of Biomedical Engineering</p>
             </div>
-            <a class="pill" href="https://doi.org/10.1007/s10439-026-04321-4">DOI</a>
+            <div class="publication-actions">
+              <a class="pill primary-link" href="/publications/pi-unet/">Paper page</a>
+              <a class="pill" href="https://doi.org/10.1007/s10439-026-04321-4" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
           </article>
 
           <article class="publication">
             <div class="pub-year">2025</div>
             <div>
-              <h3>Optimal Experimental Design for Repeatable Hyperelastic Material Characterization</h3>
+              <h3>
+                <a href="/publications/optimal-experimental-design/">
+                  Optimal Experimental Design for Repeatable Hyperelastic Material Characterization
+                </a>
+              </h3>
               <p>Amirreza Asadi and Kaveh Laksari · Journal of the Mechanical Behavior of Biomedical Materials</p>
             </div>
-            <a class="pill" href="https://doi.org/10.1016/j.jmbbm.2025.107104" target="_blank" rel="noopener noreferrer" aria-label="Open the DOI page for Optimal Experimental Design for Repeatable Hyperelastic Material Characterization">DOI</a>
+            <div class="publication-actions">
+              <a class="pill primary-link" href="/publications/optimal-experimental-design/">Paper page</a>
+              <a class="pill" href="https://doi.org/10.1016/j.jmbbm.2025.107104" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
           </article>
         </div>
       </div>

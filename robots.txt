@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://aasad009.github.io/sitemap.xml
+
+Sitemap: https://amirreza-asadi.com/sitemap.xml

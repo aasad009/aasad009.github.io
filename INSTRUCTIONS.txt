@@ -1,0 +1,47 @@
+PUBLICATION PAGES UPDATE
+
+This package adds two unique publication pages:
+
+https://amirreza-asadi.com/publications/optimal-experimental-design/
+https://amirreza-asadi.com/publications/pi-unet/
+
+Files to replace:
+- index.html
+- sitemap.xml
+- robots.txt
+
+New folders to upload:
+- publications/optimal-experimental-design/
+- publications/pi-unet/
+
+Each publication folder contains:
+- index.html
+- citation.bib
+
+The pages include:
+- self-referential canonical URLs
+- robots index/follow metadata
+- Google Scholar Highwire Press citation meta tags
+- visible author-written abstracts
+- Schema.org ScholarlyArticle JSON-LD
+- DOI and publisher links
+- internal links from the homepage and between papers
+- BibTeX citation blocks
+- mobile-responsive design
+
+Suggested commit message:
+Add indexed publication pages
+
+AFTER DEPLOYMENT
+
+1. Confirm these pages open:
+   /publications/optimal-experimental-design/
+   /publications/pi-unet/
+
+2. Open Google Search Console.
+3. Resubmit sitemap.xml.
+4. Use URL Inspection for each exact publication URL.
+5. Click Request indexing once for each URL.
+6. Also inspect the homepage after the internal-link update.
+
+Do not upload publisher PDFs unless your publication agreement or repository policy permits it.

@@ -4,8 +4,6 @@
   <url>
     <loc>https://amirreza-asadi.com/</loc>
     <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
     <image:image>
       <image:loc>https://amirreza-asadi.com/profile.png</image:loc>
       <image:title>Amirreza Asadi</image:title>
@@ -14,5 +12,13 @@
       <image:loc>https://amirreza-asadi.com/award-poster-2026.jpg</image:loc>
       <image:title>Outstanding Poster Presentation Award at UC Riverside</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://amirreza-asadi.com/publications/optimal-experimental-design/</loc>
+    <lastmod>2026-08-03</lastmod>
+  </url>
+  <url>
+    <loc>https://amirreza-asadi.com/publications/pi-unet/</loc>
+    <lastmod>2026-08-03</lastmod>
   </url>
 </urlset>
