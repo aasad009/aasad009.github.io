@@ -17,7 +17,7 @@ year: 2026
 doi: 10.1007/s10439-026-04321-4
 graphical_abstract: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
 graphical_abstract_alt: >-
-  Graphical abstract showing volumetric deformation inputs, a stress-constrained physics-informed UNet, voxel-wise parameter maps, and mechanics-consistent tissue reconstruction.
+  Selected study figures showing volumetric data generation, the PI-UNet architecture, and voxel-wise brain-tissue mechanical reconstruction.
 og_image: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
 funding: This work was supported by the National Institutes of Health through NIBIB Trailblazer Award R21EB032187 and NINDS Grant 1R01NS131554-01.
 seo_sections:

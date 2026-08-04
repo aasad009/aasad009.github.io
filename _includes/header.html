@@ -1,22 +1,42 @@
 {% assign is_fa = false %}{% if page.lang == 'fa' %}{% assign is_fa = true %}{% endif %}
+{% if is_fa %}
+  {% assign language_url = page.alternate_url | default: '/' %}
+  {% assign language_name = 'English' %}
+  {% assign language_hreflang = 'en' %}
+  {% assign language_label = 'View this page in English' %}
+{% else %}
+  {% assign language_url = page.alternate_url | default: '/fa/' %}
+  {% assign language_name = 'فارسی' %}
+  {% assign language_hreflang = 'fa' %}
+  {% assign language_label = 'مشاهده این صفحه به زبان فارسی' %}
+{% endif %}
 <nav class="nav" aria-label="{% if is_fa %}پیمایش اصلی{% else %}Primary navigation{% endif %}">
   <div class="container nav-inner">
     <a class="brand" href="{% if is_fa %}{{ '/fa/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{% if is_fa %}صفحه اصلی امیررضا اسدی{% else %}Amirreza Asadi homepage{% endif %}">
       <img class="brand-logo" src="{{ '/Logo.png' | relative_url }}" alt="" width="34" height="34" />
       <span>{% if is_fa %}{{ site.author.name_fa }}{% else %}{{ site.author.name }}{% endif %}</span>
     </a>
+
     <div class="nav-actions">
       <div class="nav-links">
         {% if is_fa %}{% assign nav_items = site.data.navigation_fa %}{% else %}{% assign nav_items = site.data.navigation_en %}{% endif %}
         {% for item in nav_items %}<a href="{{ item.url | relative_url }}">{{ item.label }}</a>{% endfor %}
       </div>
-      {% if page.alternate_url %}
-      <a class="language-switch" href="{{ page.alternate_url | relative_url }}" hreflang="{% if is_fa %}en{% else %}fa{% endif %}" lang="{% if is_fa %}en{% else %}fa{% endif %}">{% if is_fa %}English{% else %}فارسی{% endif %}</a>
-      {% elsif is_fa %}
-      <a class="language-switch" href="{{ '/' | relative_url }}" hreflang="en" lang="en">English</a>
-      {% else %}
-      <a class="language-switch" href="{{ '/fa/' | relative_url }}" hreflang="fa" lang="fa">فارسی</a>
-      {% endif %}
+
+      <a
+        class="language-switch"
+        href="{{ language_url | relative_url }}"
+        hreflang="{{ language_hreflang }}"
+        lang="{{ language_hreflang }}"
+        aria-label="{{ language_label }}"
+        title="{{ language_label }}"
+      >
+        <svg class="language-switch-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M3.5 12h17M12 3c2.3 2.5 3.5 5.5 3.5 9S14.3 18.5 12 21M12 3C9.7 5.5 8.5 8.5 8.5 12S9.7 18.5 12 21"></path>
+        </svg>
+        <span class="language-name">{{ language_name }}</span>
+      </a>
     </div>
   </div>
 </nav>

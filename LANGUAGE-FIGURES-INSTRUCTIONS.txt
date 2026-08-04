@@ -1,0 +1,18 @@
+LANGUAGE, PERSIAN DESIGN, AND SCIENTIFIC FIGURE UPDATE
+
+Upload the extracted contents to the repository root and replace matching files.
+
+This update:
+- keeps the language selector on one line as a compact globe + language pill;
+- hides the full navigation earlier on narrower screens rather than wrapping;
+- gives the Persian homepage a distinct natural RTL composition with text on the right and portrait on the left;
+- uses Vazirmatn-specific spacing, line heights, buttons, cards, and mixed Persian/English isolation;
+- replaces the three generic research-card SVGs with scientific paper visuals;
+- replaces both generated graphical abstracts with paper-derived figures;
+- updates English and Persian alt text;
+- bumps the asset version to clear cached CSS.
+
+Suggested commit message:
+Refine language UI and replace scientific visuals
+
+After deployment, use Ctrl + Shift + R or a private window.

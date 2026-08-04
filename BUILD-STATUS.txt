@@ -1,0 +1,1 @@
+Static YAML/front-matter validation passed. Local Jekyll executable was unavailable; GitHub Pages will perform the authoritative build.

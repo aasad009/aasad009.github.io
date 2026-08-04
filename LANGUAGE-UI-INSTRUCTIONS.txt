@@ -1,0 +1,31 @@
+LANGUAGE NAVIGATION AND PERSIAN DESIGN UPDATE
+
+Upload the contents of this patch to the repository root and replace matching files.
+
+Files changed:
+- _config.yml
+- _includes/header.html
+- _layouts/default.html
+- _data/navigation_fa.yml
+- assets/css/main.css
+- assets/css/publication.css
+- assets/css/persian.css (new)
+- fa/index.html
+- fa/publications/pi-unet/index.md
+
+What this fixes:
+- Keeps the language control on the same navigation line.
+- Shows a compact globe + FA / فارسی or EN / English language pill.
+- Prevents wrapping by hiding the full navigation before space becomes tight.
+- Places the Persian identity on the right and navigation on the left.
+- Loads Vazirmatn only on Persian pages.
+- Gives Persian pages independent heading sizes, line heights, spacing, RTL flow,
+  mixed Persian/Latin handling, chips, timeline alignment, and responsive rules.
+- Refines the Persian hero wording and line breaks.
+- Fixes the Persian PI-UNet funding field typo.
+
+Suggested commit message:
+Polish language navigation and Persian design
+
+After GitHub Pages reports a successful deployment, hard-refresh with
+Ctrl + Shift + R or inspect the site in a private/incognito window.

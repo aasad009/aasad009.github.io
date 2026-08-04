@@ -19,7 +19,7 @@ doi: 10.1016/j.jmbbm.2025.107104
 code_url: https://github.com/klaksari/optimal_hyperelastic_parameter_ID
 graphical_abstract: /assets/images/hyperelastic-optimal-experimental-design-graphical-abstract.png
 graphical_abstract_alt: >-
-  Graphical abstract showing candidate hyperelastic experiments, information-based selection, and reduced parameter uncertainty.
+  Information and conditioning landscapes used to select robust loading configurations for hyperelastic parameter identification.
 og_image: /assets/images/hyperelastic-optimal-experimental-design-graphical-abstract.png
 funding: This work was supported by the National Institutes of Health through NIBIB Trailblazer Award R21EB032187 and NINDS Grant 1R01NS131554-01.
 seo_sections:

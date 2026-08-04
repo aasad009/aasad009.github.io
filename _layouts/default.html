@@ -6,8 +6,14 @@
   <link rel="icon" type="image/png" href="{{ '/Logo.png' | relative_url }}" />
   <link rel="apple-touch-icon" href="{{ '/Logo.png' | relative_url }}" />
   {% include seo.html %}
+  {% if page.lang == 'fa' %}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.asset_version }}" />
   {% if page.layout == 'publication' %}<link rel="stylesheet" href="{{ '/assets/css/publication.css' | relative_url }}?v={{ site.asset_version }}" />{% endif %}
+  {% if page.lang == 'fa' %}<link rel="stylesheet" href="{{ '/assets/css/persian.css' | relative_url }}?v={{ site.asset_version }}" />{% endif %}
   {% include structured-data.html %}
 </head>
 <body class="page-{{ page.layout | default: 'default' }} lang-{{ page.lang | default: 'en' }}">
