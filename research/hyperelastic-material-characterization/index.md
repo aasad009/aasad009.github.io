@@ -17,6 +17,7 @@ topic_terms:
   - Model identifiability
   - Soft-tissue testing
 og_image: /assets/images/hyperelastic-optimal-experimental-design-graphical-abstract.png
+interactive_demo: oed_sampling
 related_pages:
   - title: Optimal experimental design paper
     url: /publications/optimal-experimental-design/
@@ -46,3 +47,7 @@ Optimizing determinant and conditioning metrics enables quantitative selection o
 ## Relevance to biomechanics
 
 Reported soft-tissue parameters often vary substantially across studies, even for similar tissues and constitutive models. Differences in specimen preparation matter, but experimental configuration and parameter identifiability can also contribute. Better-designed protocols make comparisons more meaningful and provide stronger foundations for patient-specific modeling, tissue classification, and inverse elastography.
+
+## Explore conditioning interactively
+
+The interactive example below isolates the central experimental-design idea in a simple quadratic parameter-estimation problem. Move the measurement locations, change the noise level, and compare how information volume and conditioning affect the recovered parameters. The same principle motivates the stress–material Jacobian used in the hyperelastic characterization framework.

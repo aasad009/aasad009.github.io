@@ -1,0 +1,32 @@
+ADD INTERACTIVE OED EXAMPLE TO THE RESEARCH THEME
+
+This update embeds the same interactive conditioning example on:
+
+English:
+- /research/hyperelastic-material-characterization/
+
+Persian:
+- /fa/research/hyperelastic-material-characterization/
+
+The original publication-page demos remain unchanged.
+
+Implementation details:
+- The reusable OED demo include is now supported by research-topic pages.
+- publication.css loads automatically whenever the interactive demo is enabled.
+- oed-demo.js already loads through the shared default layout.
+- Both topic pages include a short explanation connecting the simplified
+  quadratic example to the stress-material Jacobian framework.
+- The Persian version uses the existing translated RTL interface.
+
+Upload the extracted patch contents to the repository root and replace matching
+files while preserving folders.
+
+Changed files:
+- _config.yml
+- _layouts/default.html
+- _layouts/research-topic.html
+- research/hyperelastic-material-characterization/index.md
+- fa/research/hyperelastic-material-characterization/index.md
+
+Suggested commit message:
+Add OED demo to research theme

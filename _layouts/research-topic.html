@@ -17,4 +17,8 @@ layout: default
     {{ content }}
     {% if page.related_pages %}<section class="topic-related"><h2>{% if is_fa %}صفحات مرتبط{% else %}Related pages{% endif %}</h2><div class="topic-related-grid">{% for item in page.related_pages %}<a class="card" href="{{ item.url | relative_url }}"><strong>{{ item.title }}</strong><span>{{ item.description }}</span></a>{% endfor %}</div></section>{% endif %}
   </article>
+
+  {% if page.interactive_demo == 'oed_sampling' %}
+    {% include oed-interactive-demo.html %}
+  {% endif %}
 </main>
