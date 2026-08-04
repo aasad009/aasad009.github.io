@@ -139,6 +139,7 @@ permalink: /
           <div class="hero-actions">
             <a class="button primary" href="#research">Explore my research</a>
             <a class="button secondary" href="#publications">View publications</a>
+            <a class="button secondary" href="{{ site.cv_file | relative_url }}" download>Download CV</a>
           </div>
 
           <div class="hero-meta">
@@ -300,8 +301,20 @@ permalink: /
       {% assign papers = site.publications | sort: 'year' | reverse %}
       {% for paper in papers %}
       <article class="publication">
+        {% if paper.graphical_abstract %}
+        <a class="publication-thumb" href="{{ paper.url | relative_url }}" aria-label="View {{ paper.title | escape }}">
+          <img
+            src="{{ paper.graphical_abstract | relative_url }}"
+            alt=""
+            width="1664"
+            height="936"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        {% endif %}
         <div class="pub-year">{{ paper.year }}</div>
-        <div>
+        <div class="publication-copy">
           <h3><a href="{{ paper.url | relative_url }}">{{ paper.title }}</a></h3>
           <p>{{ paper.authors | join: ' and ' }} · {{ paper.journal }}</p>
         </div>

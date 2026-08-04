@@ -17,9 +17,24 @@ layout: default
     </div>
   </header>
 
+  {% if page.graphical_abstract %}
+  <figure class="container visual-card publication-figure">
+    <img
+      class="graphical-abstract"
+      src="{{ page.graphical_abstract | relative_url }}"
+      alt="{{ page.graphical_abstract_alt | default: page.title | escape }}"
+      width="1664"
+      height="936"
+      loading="eager"
+      decoding="async"
+    />
+    <figcaption>Graphical abstract</figcaption>
+  </figure>
+  {% elsif page.visual_include %}
   <div class="container visual-card">
     {% include {{ page.visual_include }} %}
   </div>
+  {% endif %}
 
   <section id="abstract">
     <div class="container section-grid">

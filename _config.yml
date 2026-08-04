@@ -4,6 +4,7 @@ url: https://amirreza-asadi.com
 baseurl: ""
 domain: amirreza-asadi.com
 default_image: /profile.png
+cv_file: /Acadmic_CV.pdf
 author:
   name: Amirreza Asadi
 collections:

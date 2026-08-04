@@ -12,6 +12,10 @@ journal: Journal of the Mechanical Behavior of Biomedical Materials
 year: 2025
 doi: 10.1016/j.jmbbm.2025.107104
 code_url: https://github.com/klaksari/optimal_hyperelastic_parameter_ID
+graphical_abstract: /OED_GA.png
+graphical_abstract_alt: >-
+  Graphical abstract showing candidate hyperelastic experiments, information-based selection, and reduced parameter uncertainty.
+og_image: /OED_GA.png
 visual_include: visual-optimal-experimental-design.html
 abstract_html: >-
   <p>Reliable identification of hyperelastic material parameters is essential for modeling the mechanical behavior of materials, including biological tissues. Yet experimental configurations often lack quantitative design guidelines, which can produce high variance and poor reproducibility. This work introduces a stress–material Jacobian framework for selecting the loading mode, loading level, and number of experiments used in hyperelastic material characterization.</p><p>By analyzing the determinant and condition number of the Jacobian that relates stress space to material-parameter space, the framework identifies experimental configurations that reduce sensitivity to noise, improve robustness, and limit the number of required tests. The approach is demonstrated for Neo-Hookean, Mooney–Rivlin, and Ogden models under multiple loading conditions, and the results show improved parameter-identification reproducibility and robustness to measurement uncertainty.</p>

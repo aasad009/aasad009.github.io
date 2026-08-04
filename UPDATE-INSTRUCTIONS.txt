@@ -1,0 +1,36 @@
+CV + GRAPHICAL ABSTRACT WEBSITE UPDATE
+
+The repository already contains these uploaded files, and the code uses their exact case-sensitive names:
+- Acadmic_CV.pdf
+- OED_GA.png
+- PIUNET_GA.png
+
+Replace/upload the files from this package while preserving your existing media files.
+
+Primary changed files:
+- _config.yml
+- _data/navigation.yml
+- _includes/header.html
+- _includes/seo.html
+- _includes/structured-data.html
+- _layouts/publication.html
+- _publications/optimal-experimental-design.md
+- _publications/pi-unet.md
+- assets/css/main.css
+- assets/css/publication.css
+- index.html
+- TEMPLATE-GUIDE.md
+
+New behavior:
+- Adds a CV link to the shared navigation.
+- Adds a Download CV button to the homepage hero.
+- Shows OED_GA.png on the OED publication page and homepage.
+- Shows PIUNET_GA.png on the PI-UNet publication page and homepage.
+- Uses each graphical abstract as the page's social-sharing image.
+- Keeps a reusable graphical_abstract front-matter field for future papers.
+
+Suggested commit message:
+Add CV and graphical abstracts
+
+Important:
+The uploaded CV filename is spelled "Acadmic_CV.pdf". The code intentionally uses that exact filename so the link works. You may later rename it to "Academic_CV.pdf" or "cv.pdf" and change only `cv_file` in `_config.yml` plus the CV URL in `_data/navigation.yml`.

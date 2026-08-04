@@ -48,3 +48,24 @@ bundle exec jekyll serve
 ```
 
 Open `http://localhost:4000`.
+
+
+## CV and graphical abstracts
+
+The CV filename is configured once in `_config.yml`:
+
+```yaml
+cv_file: /Acadmic_CV.pdf
+```
+
+The shared navigation reads its CV link from `_data/navigation.yml`, and the homepage button reads `site.cv_file`.
+
+Each publication can display a graphical abstract by adding these fields to its `_publications/*.md` front matter:
+
+```yaml
+graphical_abstract: /my-paper-graphical-abstract.png
+graphical_abstract_alt: A concise description of the figure.
+og_image: /my-paper-graphical-abstract.png
+```
+
+The publication layout displays the image automatically, the homepage uses it as a thumbnail, and the SEO template uses it for social sharing.

@@ -8,11 +8,11 @@
 <meta property="og:description" content="{{ page.description | default: site.description | escape }}" />
 <meta property="og:url" content="{{ page.url | absolute_url }}" />
 <meta property="og:site_name" content="{{ site.title }}" />
-<meta property="og:image" content="{{ page.og_image | default: site.default_image | absolute_url }}" />
+<meta property="og:image" content="{{ page.og_image | default: page.graphical_abstract | default: site.default_image | absolute_url }}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}" />
 <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}" />
-<meta name="twitter:image" content="{{ page.og_image | default: site.default_image | absolute_url }}" />
+<meta name="twitter:image" content="{{ page.og_image | default: page.graphical_abstract | default: site.default_image | absolute_url }}" />
 <meta name="theme-color" content="#07111f" />
 {% if page.layout == 'publication' %}
 <meta name="citation_title" content="{{ page.title | escape }}" />
