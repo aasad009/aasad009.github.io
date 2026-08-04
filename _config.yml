@@ -1,12 +1,16 @@
 title: Amirreza Asadi
-description: Computational biomechanics, nonlinear tissue mechanics, inverse problems, medical imaging, and physics-informed AI.
+description: Computational biomechanics, nonlinear tissue mechanics, inverse problems, medical imaging, hyperelasticity, and physics-informed AI.
 url: https://amirreza-asadi.com
 baseurl: ""
 domain: amirreza-asadi.com
 default_image: /profile.png
-asset_version: "2026-08-03-5"
+asset_version: "2026-08-04-seo1"
 author:
   name: Amirreza Asadi
+  short_name: Amir Asadi
+  name_fa: امیررضا اسدی
+  email: aasad009@ucr.edu
+  orcid: 0009-0004-6941-8808
 collections:
   publications:
     output: true
@@ -14,11 +18,22 @@ collections:
 defaults:
   - scope:
       path: ""
+    values:
+      layout: default
+      lang: en
+      dir: ltr
+  - scope:
+      path: ""
       type: publications
     values:
       layout: publication
+      lang: en
+      dir: ltr
 exclude:
   - README.md
   - TEMPLATE-GUIDE.md
+  - SEO-DEPLOYMENT-GUIDE.md
   - Gemfile
   - Gemfile.lock
+  - OED_GA.png
+  - PIUNET_GA.png

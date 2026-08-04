@@ -3,7 +3,15 @@ layout: null
 permalink: /sitemap.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in site.pages %}{% unless page.url contains '/assets/' or page.url == '/sitemap.xml' %}<url><loc>{{ page.url | absolute_url }}</loc></url>{% endunless %}{% endfor %}
-{% for paper in site.publications %}<url><loc>{{ paper.url | absolute_url }}</loc></url>{% endfor %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{% assign all_pages = site.pages | concat: site.publications %}
+{% for item in all_pages %}{% unless item.url contains '/assets/' or item.url == '/sitemap.xml' or item.url == '/robots.txt' or item.sitemap == false %}
+  <url>
+    <loc>{{ item.url | absolute_url }}</loc>
+    <xhtml:link rel="alternate" hreflang="{{ item.lang | default: 'en' }}" href="{{ item.url | absolute_url }}" />
+    {% if item.alternate_url %}<xhtml:link rel="alternate" hreflang="{% if item.lang == 'fa' %}en{% else %}fa{% endif %}" href="{{ item.alternate_url | absolute_url }}" />{% endif %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{% if item.lang == 'fa' and item.alternate_url %}{{ item.alternate_url | absolute_url }}{% else %}{{ item.url | absolute_url }}{% endif %}" />
+    {% if item.graphical_abstract %}<image:image><image:loc>{{ item.graphical_abstract | absolute_url }}</image:loc><image:title>{{ item.title | escape }}</image:title></image:image>{% elsif item.og_image %}<image:image><image:loc>{{ item.og_image | absolute_url }}</image:loc><image:title>{{ item.title | escape }}</image:title></image:image>{% endif %}
+  </url>
+{% endunless %}{% endfor %}
 </urlset>

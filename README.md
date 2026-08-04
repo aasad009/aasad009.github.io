@@ -1,4 +1,5 @@
-# amirreza-asadi.com
+# Amirreza Asadi academic website
 
-Academic website for Amirreza Asadi, built with Jekyll and hosted on GitHub Pages.
-See `TEMPLATE-GUIDE.md` for editing instructions.
+Reusable Jekyll website with English and Persian pages, structured scholarly metadata, research-topic pages, publication pages, graphical abstracts, and multilingual SEO.
+
+See `TEMPLATE-GUIDE.md` and `SEO-DEPLOYMENT-GUIDE.md`.

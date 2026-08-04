@@ -1,0 +1,25 @@
+MULTILINGUAL SEO UPDATE — ENGLISH + PERSIAN
+
+Upload the entire contents of this patch to the repository root and replace matching files.
+New folders and pages must be uploaded with their exact paths.
+
+This patch adds:
+- English/Persian language switching and RTL styling.
+- Persian homepage, research pages, and publication summaries.
+- Reciprocal hreflang and x-default annotations.
+- Stable structured-data identity for Amirreza Asadi / Amir Asadi / امیررضا اسدی / امیر اسدی.
+- Broader English research-topic pages for non-title searches.
+- Descriptive graphical-abstract image filenames and image sitemap entries.
+- Publication-level funding acknowledgments.
+- Improved page titles, descriptions, author identity, and internal links.
+
+Keep the CV PDF deleted from the public repository.
+
+Suggested commit message:
+Add multilingual SEO and research topic pages
+
+After deployment:
+1. Open https://amirreza-asadi.com/sitemap.xml
+2. Resubmit the sitemap in Google Search Console.
+3. Request indexing for the new English and Persian pages.
+4. Use a private/incognito window or Ctrl+Shift+R to bypass cached CSS and metadata.

@@ -1,71 +1,28 @@
-# Website template system
+# Website template guide
 
-This repository now uses **Jekyll**, the static-site generator built into GitHub Pages.
-You edit shared templates and data once; GitHub generates every page automatically.
+## Shared structure
 
-## Global changes
+- `_layouts/default.html`: common HTML shell, language and direction attributes.
+- `_includes/header.html`: shared navigation and English/Persian switch.
+- `_includes/footer.html`: shared footer.
+- `_includes/seo.html`: canonical, Open Graph, citation metadata, and hreflang.
+- `_includes/structured-data.html`: WebSite, ProfilePage, Person, Article, and ScholarlyArticle JSON-LD.
+- `_includes/science-background.html`: reusable mechanics-inspired hero graphics.
+- `_layouts/publication.html`: reusable English and Persian publication-page template.
+- `_layouts/research-topic.html`: reusable long-form research-topic template.
 
-- Navigation: `_data/navigation.yml`
-- Header/logo: `_includes/header.html`
-- Footer: `_includes/footer.html`
-- SEO tags: `_includes/seo.html`
-- Shared page shell: `_layouts/default.html`
-- Publication page design: `_layouts/publication.html`
-- Homepage styling: `assets/css/main.css`
-- Publication styling: `assets/css/publication.css`
+## Adding an English research page
 
-Changing any of these files updates every applicable page on the next GitHub Pages build.
+Create `research/<slug>/index.md` with `layout: research-topic`, `lang: en`, an English permalink, and `alternate_url` pointing to its Persian counterpart.
 
-## Add a publication
+## Adding a Persian research page
 
-1. Copy one file in `_publications/`.
-2. Rename it, for example `_publications/new-paper.md`.
-3. Edit only the YAML fields at the top.
-4. Add a matching visual include only when a new custom diagram is wanted.
+Create `fa/research/<slug>/index.md` with `layout: research-topic`, `lang: fa`, `dir: rtl`, and a reciprocal `alternate_url`. Use Persian visible content rather than hidden keyword lists.
 
-The homepage publication list and the paper page are generated automatically.
+## Adding a publication
 
-## Add or remove a navigation item
+Create one English file under `_publications/`. Add a Persian summary under `fa/publications/<slug>/index.md`. Give both pages reciprocal `alternate_url` values. Add `graphical_abstract`, descriptive alt text, DOI, authors, journal, abstract, contributions, methods, and BibTeX.
 
-Edit `_data/navigation.yml` once. Do not edit individual pages.
+## Global edits
 
-## GitHub deployment
-
-Upload this structure to the repository root. Keep these existing image files in the root:
-
-- `Logo.png`
-- `profile.png`
-- `award-poster-2026.jpg`
-
-In GitHub: Settings → Pages → Build and deployment → Source → **Deploy from a branch**.
-Select the `main` branch and `/ (root)` folder. GitHub Pages will run Jekyll automatically.
-
-## Local preview (optional)
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
-
-Open `http://localhost:4000`.
-
-
-## CV and graphical abstracts
-
-The CV filename is configured once in `_config.yml`:
-
-```yaml
-cv_file: /Acadmic_CV.pdf
-```
-
-The shared navigation reads its CV link from `_data/navigation.yml`, and the homepage button reads `site.cv_file`.
-
-Each publication can display a graphical abstract by adding these fields to its `_publications/*.md` front matter:
-
-```yaml
-graphical_abstract: /my-paper-graphical-abstract.png
-graphical_abstract_alt: A concise description of the figure.
-og_image: /my-paper-graphical-abstract.png
-```
-
-The publication layout displays the image automatically, the homepage uses it as a thumbnail, and the SEO template uses it for social sharing.
+Navigation labels are in `_data/navigation_en.yml` and `_data/navigation_fa.yml`. Global design is in `assets/css/main.css`; publication-only styles are in `assets/css/publication.css`.
