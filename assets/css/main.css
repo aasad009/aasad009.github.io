@@ -1346,7 +1346,9 @@
 
 /* Ongoing research program card */
 .research-visual--ongoing {
-  height: 132px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10 / 3;
   padding: 0;
   background:
     radial-gradient(circle at 38% 42%, rgba(44, 133, 188, 0.18), transparent 55%),
@@ -1354,12 +1356,10 @@
 }
 
 .research-visual--ongoing img {
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: center;
   border-radius: 13px;
   background: transparent;
-}
-
-html[lang="fa"] .research-visual--ongoing img {
-  transform: none;
 }

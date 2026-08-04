@@ -1,0 +1,35 @@
+FINAL RTL AND ONGOING-VISUAL FIX
+
+This update fixes both reported problems:
+
+1. Ongoing-research visual
+- Replaces the cropped raster image with a scalable wide SVG.
+- Shows the complete workflow at every screen size.
+- Uses object-fit: contain instead of cropping.
+- Removes the black unused area.
+- Represents multiple ongoing directions, not only a constitutive atlas.
+
+2. Persian implementation
+- Places the brand at the right and navigation/language switch at the left.
+- Keeps the language switch on one line.
+- Places Persian hero text on the right and portrait on the left.
+- Makes section headings and descriptions explicitly right-aligned.
+- Orders research cards visually from right to left: 1, 2, then 3.
+- Applies right-to-left text alignment inside cards, links, publications,
+  education, topic pages, and publication pages.
+- Reorders publication and content panels for a natural Persian hierarchy.
+- Preserves semantic top-to-bottom ordering on mobile screens.
+
+Upload the extracted patch contents to the repository root and replace matching
+files while preserving folders.
+
+Changed files:
+- _config.yml
+- index.html
+- fa/index.html
+- assets/css/main.css
+- assets/css/persian.css
+- assets/images/research-ongoing-program.svg
+
+Suggested commit message:
+Fix Persian RTL layout and ongoing research visual

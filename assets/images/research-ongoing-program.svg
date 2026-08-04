@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 480" role="img" aria-labelledby="title desc">
+  <title id="title">Ongoing computational biomechanics research program</title>
+  <desc id="desc">A scientific workflow linking tissue modeling, deformation inference, voxel-wise mechanics, uncertainty quantification, and constitutive-model comparison.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071a31"/>
+      <stop offset="0.55" stop-color="#08253c"/>
+      <stop offset="1" stop-color="#06333b"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#66b3ff"/>
+      <stop offset="1" stop-color="#7ee0d2"/>
+    </linearGradient>
+    <radialGradient id="heat" cx="50%" cy="48%" r="58%">
+      <stop offset="0" stop-color="#ffe36e"/>
+      <stop offset="0.34" stop-color="#7ee0d2"/>
+      <stop offset="0.7" stop-color="#3189c9"/>
+      <stop offset="1" stop-color="#153967"/>
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#7ee0d2"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="480" rx="54" fill="url(#bg)"/>
+  <rect x="14" y="14" width="1572" height="452" rx="46" fill="none" stroke="#6ba8bd" stroke-opacity=".42" stroke-width="3"/>
+
+  <!-- connecting flow -->
+  <path d="M286 240H336M604 240H654M922 240H972M1240 240H1290"
+        fill="none" stroke="url(#flow)" stroke-width="8" stroke-linecap="round"
+        marker-end="url(#arrow)" opacity=".9"/>
+
+  <!-- Module 1: tissue / geometry -->
+  <g transform="translate(48 62)">
+    <rect width="238" height="356" rx="34" fill="#07182b" fill-opacity=".78" stroke="#75cfe0" stroke-opacity=".22"/>
+    <path d="M66 258C24 224 31 151 75 124C83 73 152 52 186 91C229 94 237 153 211 180C222 226 183 276 139 268C116 286 86 278 66 258Z"
+          fill="#173f64" stroke="#77d7dc" stroke-width="4"/>
+    <path d="M84 239C58 208 66 160 98 145C103 111 148 97 174 120C200 124 207 159 191 178C200 210 172 244 141 238C125 250 101 251 84 239Z"
+          fill="none" stroke="#75bfff" stroke-width="3" opacity=".8"/>
+    <g stroke="#7ee0d2" stroke-opacity=".44" stroke-width="2">
+      <path d="M75 124L211 180M66 258L186 91M98 145L191 178M84 239L174 120"/>
+      <path d="M62 176C104 163 161 166 213 196M68 213C114 196 169 205 204 225"/>
+      <path d="M112 105C105 153 111 211 127 270M153 86C143 139 151 204 169 256"/>
+    </g>
+    <circle cx="120" cy="172" r="8" fill="#7ee0d2" filter="url(#glow)"/>
+  </g>
+
+  <!-- Module 2: deformation inference -->
+  <g transform="translate(366 62)">
+    <rect width="238" height="356" rx="34" fill="#07182b" fill-opacity=".78" stroke="#75cfe0" stroke-opacity=".22"/>
+    <path d="M48 93C95 75 159 83 198 107L190 275C144 293 88 284 45 258Z"
+          fill="#123556" stroke="#70c9e8" stroke-width="4"/>
+    <g fill="none" stroke="#74d8d2" stroke-width="2.5" opacity=".72">
+      <path d="M48 93C94 108 146 104 198 107"/>
+      <path d="M47 134C95 149 145 145 196 148"/>
+      <path d="M46 176C93 191 145 188 194 190"/>
+      <path d="M46 217C91 232 144 229 192 232"/>
+      <path d="M45 258C88 273 144 270 190 275"/>
+      <path d="M48 93C61 137 60 210 45 258"/>
+      <path d="M87 86C101 139 99 232 88 284"/>
+      <path d="M128 87C141 144 140 239 132 288"/>
+      <path d="M166 95C178 149 178 230 174 283"/>
+      <path d="M198 107C203 152 198 226 190 275"/>
+    </g>
+    <path d="M119 45V84M119 303V340M18 185H43M198 185H224"
+          stroke="#7ee0d2" stroke-width="7" stroke-linecap="round" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Module 3: voxel-wise mechanics -->
+  <g transform="translate(684 62)">
+    <rect width="238" height="356" rx="34" fill="#07182b" fill-opacity=".78" stroke="#75cfe0" stroke-opacity=".22"/>
+    <path d="M51 198C51 119 91 80 143 86C190 91 211 130 201 179C222 212 197 271 151 274C103 290 51 258 51 198Z"
+          fill="url(#heat)" stroke="#73c5e3" stroke-width="4"/>
+    <path d="M126 90C108 130 109 234 132 274" fill="none" stroke="#d9f4ff" stroke-opacity=".52" stroke-width="3"/>
+    <g fill="#dff7ff" opacity=".24">
+      <rect x="72" y="121" width="22" height="22" rx="4"/><rect x="99" y="115" width="22" height="22" rx="4"/>
+      <rect x="132" y="118" width="22" height="22" rx="4"/><rect x="160" y="130" width="22" height="22" rx="4"/>
+      <rect x="68" y="151" width="22" height="22" rx="4"/><rect x="96" y="145" width="22" height="22" rx="4"/>
+      <rect x="135" y="148" width="22" height="22" rx="4"/><rect x="166" y="162" width="22" height="22" rx="4"/>
+      <rect x="66" y="184" width="22" height="22" rx="4"/><rect x="95" y="177" width="22" height="22" rx="4"/>
+      <rect x="137" y="181" width="22" height="22" rx="4"/><rect x="165" y="194" width="22" height="22" rx="4"/>
+      <rect x="75" y="217" width="22" height="22" rx="4"/><rect x="104" y="210" width="22" height="22" rx="4"/>
+      <rect x="136" y="213" width="22" height="22" rx="4"/><rect x="158" y="226" width="22" height="22" rx="4"/>
+    </g>
+    <circle cx="114" cy="186" r="17" fill="#ffe36e" opacity=".82" filter="url(#glow)"/>
+  </g>
+
+  <!-- Module 4: uncertainty -->
+  <g transform="translate(1002 62)">
+    <rect width="238" height="356" rx="34" fill="#07182b" fill-opacity=".78" stroke="#75cfe0" stroke-opacity=".22"/>
+    <path d="M38 286H207M45 292V62" stroke="#bad9ed" stroke-width="3" opacity=".55"/>
+    <path d="M53 278C79 271 82 122 119 105C155 89 165 259 199 277"
+          fill="none" stroke="#7ee0d2" stroke-width="5"/>
+    <path d="M54 279C78 272 96 168 124 154C152 139 174 247 199 278"
+          fill="none" stroke="#66b3ff" stroke-width="5"/>
+    <path d="M54 279C75 270 91 83 129 65C165 49 178 255 201 278"
+          fill="none" stroke="#89d7ff" stroke-width="4" stroke-dasharray="11 10" opacity=".8"/>
+    <circle cx="124" cy="154" r="7" fill="#7ee0d2"/>
+  </g>
+
+  <!-- Module 5: constitutive model landscape -->
+  <g transform="translate(1320 62)">
+    <rect width="232" height="356" rx="34" fill="#07182b" fill-opacity=".78" stroke="#75cfe0" stroke-opacity=".22"/>
+    <g stroke="#0b273d" stroke-width="3">
+      <path d="M57 98L86 80L114 96L112 129L82 144L55 128Z" fill="#2d75ad"/>
+      <path d="M112 91L142 76L169 95L166 127L137 143L111 126Z" fill="#3c9aaf"/>
+      <path d="M167 101L194 88L216 108L210 138L180 151L163 129Z" fill="#4baaa3"/>
+      <path d="M45 144L76 130L102 151L97 183L67 198L41 178Z" fill="#317fb1"/>
+      <path d="M99 146L130 130L159 151L153 186L122 201L95 180Z" fill="#6cc0b6"/>
+      <path d="M155 149L184 134L212 153L207 187L176 203L151 181Z" fill="#438cb4"/>
+      <path d="M58 198L88 182L116 202L111 236L80 252L54 231Z" fill="#4c94ba"/>
+      <path d="M113 202L143 185L171 205L166 240L135 256L109 235Z" fill="#7ee0d2"/>
+      <path d="M169 205L199 190L220 211L213 243L183 256L164 236Z" fill="#4579a7"/>
+    </g>
+    <path d="M49 286C87 265 118 301 154 278C177 263 196 271 216 288"
+          fill="none" stroke="#7ee0d2" stroke-width="5"/>
+    <circle cx="49" cy="286" r="7" fill="#66b3ff"/>
+    <circle cx="154" cy="278" r="7" fill="#ffe36e"/>
+    <circle cx="216" cy="288" r="7" fill="#7ee0d2"/>
+  </g>
+</svg>
