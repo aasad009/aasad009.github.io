@@ -1,0 +1,33 @@
+INTERACTIVE OED EXAMPLE UPDATE
+
+This update adds a fully browser-based interactive version of the MATLAB Live
+Script example to both the English and Persian OED publication pages.
+
+The demonstration lets visitors:
+- choose poorly, well, or moderately conditioned sampling strategies;
+- move all three measurement locations continuously;
+- vary the Gaussian-noise standard deviation;
+- generate a new noise realization;
+- compare the true quadratic response with the fitted curve;
+- inspect sqrt(cond(A^T A)), sqrt(det(A^T A)), and parameter error;
+- see the current design matrix and estimated parameters update instantly.
+
+The explanatory text explicitly connects the pedagogical quadratic example to
+the paper's stress-material Jacobian and hyperelastic experimental-design logic.
+No MATLAB installation or external JavaScript library is required.
+
+Upload the extracted patch contents to the repository root while preserving
+folders and replacing matching files.
+
+Changed files:
+- _config.yml
+- _layouts/default.html
+- _layouts/publication.html
+- _includes/oed-interactive-demo.html
+- _publications/optimal-experimental-design.md
+- fa/publications/optimal-experimental-design/index.md
+- assets/css/publication.css
+- assets/js/oed-demo.js
+
+Suggested commit message:
+Add interactive OED conditioning example

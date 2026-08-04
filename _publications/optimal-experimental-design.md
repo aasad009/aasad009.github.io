@@ -1,5 +1,6 @@
 ---
 layout: publication
+interactive_demo: oed_sampling
 slug: optimal-experimental-design
 permalink: /publications/optimal-experimental-design/
 title: Optimal Experimental Design for Repeatable Hyperelastic Material Characterization

@@ -21,5 +21,6 @@
   {{ content }}
   {% include footer.html %}
   <script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
+  {% if page.interactive_demo == 'oed_sampling' %}<script src="{{ '/assets/js/oed-demo.js' | relative_url }}?v={{ site.asset_version }}" defer></script>{% endif %}
 </body>
 </html>

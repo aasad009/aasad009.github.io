@@ -1,0 +1,121 @@
+{% assign demo_fa = false %}{% if page.lang == 'fa' %}{% assign demo_fa = true %}{% endif %}
+<section class="oed-demo-section" id="interactive-demo" aria-labelledby="oed-demo-title">
+  <div class="container">
+    <header class="oed-demo-intro">
+      <div>
+        <span class="oed-demo-eyebrow">{% if demo_fa %}نمونه تعاملی{% else %}Interactive example{% endif %}</span>
+        <h2 id="oed-demo-title">{% if demo_fa %}اثر انتخاب نقاط اندازه‌گیری بر شناسایی پارامترها{% else %}How measurement selection changes parameter identifiability{% endif %}</h2>
+      </div>
+      <p>{% if demo_fa %}این نمونه ساده، منطق فایل MATLAB همراه مقاله را بازسازی می‌کند. نقاط نمونه‌برداری و سطح نویز را تغییر دهید تا ببینید شرطی‌بودن ماتریس حساسیت چگونه بر دقت برازش اثر می‌گذارد.{% else %}This browser-based version of the accompanying MATLAB example uses a quadratic inverse problem to show the same design principle: informative measurement locations improve conditioning and make parameter estimates less sensitive to noise.{% endif %}</p>
+    </header>
+
+    <div
+      class="oed-demo"
+      data-oed-demo
+      data-status-good="{% if demo_fa %}خوب‌شرط{% else %}Well conditioned{% endif %}"
+      data-status-moderate="{% if demo_fa %}شرط متوسط{% else %}Moderately conditioned{% endif %}"
+      data-status-poor="{% if demo_fa %}بدشرط{% else %}Poorly conditioned{% endif %}"
+      data-legend-true="{% if demo_fa %}تابع واقعی{% else %}True function{% endif %}"
+      data-legend-fit="{% if demo_fa %}برازش فعلی{% else %}Current fit{% endif %}"
+      data-legend-data="{% if demo_fa %}داده‌های نویزی{% else %}Noisy measurements{% endif %}"
+    >
+      <div class="oed-demo-controls">
+        <fieldset class="oed-control-group oed-preset-group">
+          <legend>{% if demo_fa %}راهبرد نمونه‌برداری{% else %}Sampling strategy{% endif %}</legend>
+          <div class="oed-preset-buttons" role="group" aria-label="{% if demo_fa %}انتخاب راهبرد نمونه‌برداری{% else %}Choose a sampling strategy{% endif %}">
+            <button type="button" class="oed-preset" data-oed-preset="poor">{% if demo_fa %}بدشرط{% else %}Poorly conditioned{% endif %}</button>
+            <button type="button" class="oed-preset is-active" data-oed-preset="well">{% if demo_fa %}خوب‌شرط{% else %}Well conditioned{% endif %}</button>
+            <button type="button" class="oed-preset" data-oed-preset="moderate">{% if demo_fa %}شرط متوسط{% else %}Moderately conditioned{% endif %}</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="oed-control-group">
+          <legend>{% if demo_fa %}مکان نقاط اندازه‌گیری{% else %}Measurement locations{% endif %}</legend>
+          {% for i in (1..3) %}
+          <label class="oed-slider-row">
+            <span class="oed-slider-label"><span dir="ltr">x<sub>{{ i }}</sub></span><output data-oed-x-output="{{ i }}">0.00</output></span>
+            <input data-oed-x="{{ i }}" type="range" min="-2" max="3" step="0.05" value="0" />
+          </label>
+          {% endfor %}
+        </fieldset>
+
+        <fieldset class="oed-control-group">
+          <legend>{% if demo_fa %}عدم‌قطعیت اندازه‌گیری{% else %}Measurement uncertainty{% endif %}</legend>
+          <label class="oed-slider-row">
+            <span class="oed-slider-label"><span>{% if demo_fa %}انحراف معیار نویز{% else %}Noise standard deviation{% endif %}</span><output data-oed-noise-output>0.50</output></span>
+            <input data-oed-noise type="range" min="0" max="1.5" step="0.05" value="0.5" />
+          </label>
+          <button class="oed-secondary-button" type="button" data-oed-regenerate>{% if demo_fa %}تولید نمونه نویز جدید{% else %}Generate new noise sample{% endif %}</button>
+        </fieldset>
+
+        <div class="oed-demo-note">
+          <strong>{% if demo_fa %}مدل واقعی{% else %}True model{% endif %}</strong>
+          <span dir="ltr">y = 2x² − 3x + 5</span>
+          <p>{% if demo_fa %}در این مثال، ماتریس طراحی <span dir="ltr">A = [x², x, 1]</span> نقش یک ژاکوبین حساسیت ساده را دارد.{% else %}Here the design matrix <span dir="ltr">A = [x², x, 1]</span> acts as a simple sensitivity Jacobian.{% endif %}</p>
+        </div>
+      </div>
+
+      <div class="oed-demo-results">
+        <div class="oed-chart-card">
+          <div class="oed-chart-header">
+            <div>
+              <span class="oed-chart-kicker">{% if demo_fa %}برازش کمترین مربعات{% else %}Least-squares reconstruction{% endif %}</span>
+              <strong>{% if demo_fa %}تابع واقعی، داده‌ها و برازش تخمینی{% else %}True response, noisy data, and estimated fit{% endif %}</strong>
+            </div>
+            <span class="oed-condition-pill" data-oed-status aria-live="polite"></span>
+          </div>
+          <svg class="oed-chart" data-oed-chart viewBox="0 0 760 430" role="img" aria-label="{% if demo_fa %}نمودار تعاملی برازش چندجمله‌ای{% else %}Interactive polynomial-fitting chart{% endif %}"></svg>
+          <div class="oed-chart-legend" aria-hidden="true">
+            <span><i class="oed-legend-line oed-legend-true"></i>{% if demo_fa %}تابع واقعی{% else %}True function{% endif %}</span>
+            <span><i class="oed-legend-line oed-legend-fit"></i>{% if demo_fa %}برازش فعلی{% else %}Current fit{% endif %}</span>
+            <span><i class="oed-legend-dot"></i>{% if demo_fa %}داده‌های نویزی{% else %}Noisy measurements{% endif %}</span>
+          </div>
+        </div>
+
+        <div class="oed-metric-grid" aria-live="polite">
+          <article class="oed-metric-card">
+            <span>{% if demo_fa %}ریشه عدد شرط{% else %}Square-root condition number{% endif %}</span>
+            <strong data-oed-condition>—</strong>
+            <small>{% if demo_fa %}کمتر بهتر است{% else %}Lower is better{% endif %}</small>
+          </article>
+          <article class="oed-metric-card">
+            <span>{% if demo_fa %}ریشه دترمینان{% else %}Square-root determinant{% endif %}</span>
+            <strong data-oed-determinant>—</strong>
+            <small>{% if demo_fa %}بیشتر یعنی حجم اطلاعاتی بزرگ‌تر{% else %}Higher means greater information volume{% endif %}</small>
+          </article>
+          <article class="oed-metric-card">
+            <span>{% if demo_fa %}خطای پارامترها{% else %}Parameter error norm{% endif %}</span>
+            <strong data-oed-error>—</strong>
+            <small><span dir="ltr">‖θ̂ − θ‖₂</span></small>
+          </article>
+        </div>
+
+        <div class="oed-detail-grid">
+          <article class="oed-detail-card">
+            <div class="oed-detail-heading">
+              <span>{% if demo_fa %}ماتریس طراحی / ژاکوبین ساده{% else %}Design matrix / simple Jacobian{% endif %}</span>
+              <code dir="ltr">A = [x², x, 1]</code>
+            </div>
+            <div class="oed-matrix" data-oed-matrix dir="ltr" aria-label="{% if demo_fa %}ماتریس طراحی فعلی{% else %}Current design matrix{% endif %}"></div>
+          </article>
+          <article class="oed-detail-card">
+            <div class="oed-detail-heading">
+              <span>{% if demo_fa %}پارامترهای تخمینی{% else %}Estimated parameters{% endif %}</span>
+              <code dir="ltr">θ̂ = [a, b, c]</code>
+            </div>
+            <dl class="oed-parameter-list" dir="ltr">
+              <div><dt>a</dt><dd data-oed-param="a">—</dd></div>
+              <div><dt>b</dt><dd data-oed-param="b">—</dd></div>
+              <div><dt>c</dt><dd data-oed-param="c">—</dd></div>
+            </dl>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <aside class="oed-demo-takeaway">
+      <strong>{% if demo_fa %}ارتباط با مقاله{% else %}Connection to the paper{% endif %}</strong>
+      <p>{% if demo_fa %}وقتی نقاط اندازه‌گیری بسیار نزدیک یا اطلاعات آن‌ها تکراری باشند، ستون‌های ماتریس حساسیت تقریباً هم‌راستا می‌شوند؛ عدد شرط افزایش می‌یابد و نویز به خطای بزرگ پارامترها تبدیل می‌شود. مقاله همین منطق را با ژاکوبین تنش–ماده برای انتخاب حالت بارگذاری و سطح تغییرشکل در مدل‌های هایپرالاستیک به‌کار می‌گیرد.{% else %}When measurement locations are clustered or redundant, the sensitivity columns become nearly collinear. The condition number rises, and small measurement noise produces large parameter errors. The paper applies this same logic to the stress–material Jacobian to select loading modes and deformation levels for hyperelastic characterization.{% endif %}</p>
+    </aside>
+  </div>
+</section>

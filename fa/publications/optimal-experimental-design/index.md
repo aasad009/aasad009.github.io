@@ -1,5 +1,6 @@
 ---
 layout: publication
+interactive_demo: oed_sampling
 permalink: /fa/publications/optimal-experimental-design/
 lang: fa
 dir: rtl

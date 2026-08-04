@@ -34,6 +34,8 @@ layout: default
   </div></section>
   {% endif %}
 
+  {% if page.interactive_demo == 'oed_sampling' %}{% include oed-interactive-demo.html %}{% endif %}
+
   <section><div class="container"><div class="cards">
     <article class="card"><h3>{% if is_fa %}دستاوردهای اصلی{% else %}Key contributions{% endif %}</h3><ul>{% for item in page.contributions %}<li>{{ item }}</li>{% endfor %}</ul></article>
     <article class="card"><h3>{% if is_fa %}خلاصه روش{% else %}Method snapshot{% endif %}</h3><div class="methods">{% for item in page.methods %}<div class="method-item"><strong>{{ item.label }}</strong><span>{{ item.value }}</span></div>{% endfor %}</div></article>
