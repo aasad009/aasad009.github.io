@@ -305,7 +305,7 @@ permalink: /
         <a class="publication-thumb" href="{{ paper.url | relative_url }}" aria-label="View {{ paper.title | escape }}">
           <img
             src="{{ paper.graphical_abstract | relative_url }}"
-            alt=""
+            alt="{{ paper.graphical_abstract_alt | default: paper.title | escape }}"
             width="1664"
             height="936"
             loading="lazy"
@@ -313,14 +313,18 @@ permalink: /
           />
         </a>
         {% endif %}
-        <div class="pub-year">{{ paper.year }}</div>
-        <div class="publication-copy">
+
+        <div class="publication-body">
+          <div class="publication-meta">
+            <span class="pub-year">{{ paper.year }}</span>
+            <span class="pub-journal">{{ paper.journal }}</span>
+          </div>
           <h3><a href="{{ paper.url | relative_url }}">{{ paper.title }}</a></h3>
-          <p>{{ paper.authors | join: ' and ' }} · {{ paper.journal }}</p>
-        </div>
-        <div class="publication-actions">
-          <a class="pill primary-link" href="{{ paper.url | relative_url }}">Paper page</a>
-          <a class="pill" href="https://doi.org/{{ paper.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+          <p class="publication-authors">{{ paper.authors | join: ' and ' }}</p>
+          <div class="publication-actions">
+            <a class="pill primary-link" href="{{ paper.url | relative_url }}">Paper page</a>
+            <a class="pill" href="https://doi.org/{{ paper.doi }}" target="_blank" rel="noopener noreferrer">DOI</a>
+          </div>
         </div>
       </article>
       {% endfor %}

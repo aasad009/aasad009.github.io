@@ -67,6 +67,15 @@
     .nav-links { display: flex; gap: 22px; color: var(--muted); font-size: .94rem; }
     .nav-links a:hover { color: var(--text); }
 
+    .nav-links a:last-child {
+      padding: 5px 10px;
+      margin: -5px -2px -5px 0;
+      border: 1px solid rgba(126,224,210,.28);
+      border-radius: 999px;
+      color: #c8fff7;
+      background: rgba(126,224,210,.06);
+    }
+
     .paper-hero {
       padding: 92px 0 56px;
     }
@@ -155,14 +164,19 @@
 
     .visual-card svg { width: 100%; height: auto; display: block; }
 
-    .publication-figure { overflow: hidden; }
+    .publication-figure {
+      overflow: hidden;
+      padding: clamp(12px, 1.8vw, 18px);
+    }
 
     .graphical-abstract {
       width: 100%;
       height: auto;
+      aspect-ratio: 16 / 9;
       display: block;
+      object-fit: contain;
       border-radius: 14px;
-      background: #f7fbff;
+      background: #ffffff;
     }
 
     .publication-figure figcaption {

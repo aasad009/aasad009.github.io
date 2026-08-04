@@ -1,0 +1,40 @@
+DISPLAY FIX — REPLACE ALL LISTED FILES
+
+The screenshots showed a partial deployment:
+- the homepage HTML knew about the new images, but the matching CSS was still old/cached;
+- the publication page was still using the previous SVG illustration;
+- the shared navigation did not yet include the CV.
+
+Upload the CONTENTS of this patch to the repository root and replace files when GitHub asks.
+Do not upload the ZIP itself to the repository.
+
+Files replaced:
+- _config.yml
+- _data/navigation.yml
+- _includes/header.html
+- _includes/seo.html
+- _layouts/default.html
+- _layouts/publication.html
+- _publications/optimal-experimental-design.md
+- _publications/pi-unet.md
+- assets/css/main.css
+- assets/css/publication.css
+- index.html
+
+The already-uploaded root assets remain unchanged:
+- Acadmic_CV.pdf
+- OED_GA.png
+- PIUNET_GA.png
+
+This version:
+- prevents graphical abstracts from becoming tall, narrow strips;
+- gives publication cards a stable two-column layout;
+- displays each graphical abstract at 16:9 on its paper page;
+- removes the old SVG fallback from both current papers;
+- adds the CV link to shared navigation;
+- adds versioned CSS/JS URLs to defeat stale browser/CDN caching.
+
+Commit message:
+Fix publication graphics and activate CV navigation
+
+After GitHub Pages finishes deploying, open the site in a private/incognito window once.

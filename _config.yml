@@ -5,6 +5,7 @@ baseurl: ""
 domain: amirreza-asadi.com
 default_image: /profile.png
 cv_file: /Acadmic_CV.pdf
+asset_version: "2026-08-03-3"
 author:
   name: Amirreza Asadi
 collections:
