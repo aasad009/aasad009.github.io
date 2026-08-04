@@ -1,0 +1,34 @@
+GITHUB PAGES BUILD RECOVERY
+
+The exact build error is:
+
+Could not locate the included file 'science-background.html'
+in /_includes.
+
+Immediate required fix:
+1. Extract this ZIP.
+2. Open the repository root in GitHub.
+3. Click Add file -> Upload files.
+4. Drag the extracted folders into the upload area, preserving their paths.
+5. Commit the upload.
+
+The most important required file is:
+_includes/science-background.html
+
+This recovery package also includes the new multilingual folders and supporting
+files that were not visible in the repository screenshot:
+- fa/
+- research/
+- _layouts/research-topic.html
+- _data/navigation_en.yml
+- _data/navigation_fa.yml
+- assets/images/
+
+A new commit will automatically trigger another GitHub Pages build. You do not
+need to re-run the failed job manually.
+
+The Node.js deprecation message is only a warning and is not the cause of the
+failure.
+
+Suggested commit message:
+Restore missing multilingual site files

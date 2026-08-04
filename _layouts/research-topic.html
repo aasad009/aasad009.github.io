@@ -1,0 +1,20 @@
+---
+layout: default
+---
+{% assign is_fa = false %}{% if page.lang == 'fa' %}{% assign is_fa = true %}{% endif %}
+<main class="topic-page">
+  <header class="topic-hero">
+    <canvas id="field"></canvas>
+    <div class="container topic-hero-inner">
+      <a class="breadcrumb" href="{% if is_fa %}{{ '/fa/#research' | relative_url }}{% else %}{{ '/#research' | relative_url }}{% endif %}">{% if is_fa %}← حوزه‌های پژوهشی{% else %}← Research themes{% endif %}</a>
+      <p class="topic-kicker">{{ page.kicker }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="topic-lede">{{ page.lede }}</p>
+      {% if page.topic_terms %}<div class="topic-terms">{% for term in page.topic_terms %}<span>{{ term }}</span>{% endfor %}</div>{% endif %}
+    </div>
+  </header>
+  <article class="topic-content container">
+    {{ content }}
+    {% if page.related_pages %}<section class="topic-related"><h2>{% if is_fa %}صفحات مرتبط{% else %}Related pages{% endif %}</h2><div class="topic-related-grid">{% for item in page.related_pages %}<a class="card" href="{{ item.url | relative_url }}"><strong>{{ item.title }}</strong><span>{{ item.description }}</span></a>{% endfor %}</div></section>{% endif %}
+  </article>
+</main>
