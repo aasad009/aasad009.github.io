@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PI-UNet Material-Field Convergence</title>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --panel: #f6f8fc;
+      --text: #171a21;
+      --muted: #626a78;
+      --border: #d7dce6;
+      --accent: #315efb;
+      --shadow: 0 12px 35px rgba(20, 30, 55, 0.11);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #11141a;
+        --panel: #181d26;
+        --text: #f4f6fa;
+        --muted: #aab1be;
+        --border: #313947;
+        --accent: #82a3ff;
+        --shadow: none;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: transparent;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .shell {
+      width: 100%;
+      min-height: 650px;
+      padding: 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      margin: 4px 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(120px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .control {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .control label {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .iteration-control { grid-column: span 2; }
+
+    select, button, input[type="range"] { width: 100%; }
+
+    select, button {
+      min-height: 36px;
+      padding: 7px 10px;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    button { cursor: pointer; font-weight: 650; }
+    button:hover { border-color: var(--accent); }
+    input[type="range"] { accent-color: var(--accent); }
+
+    .play-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 10px 2px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    #plot {
+      width: 100%;
+      height: min(720px, 72vh);
+      min-height: 520px;
+      margin-top: 8px;
+    }
+
+    #errorBox {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      color: #8b1e1e;
+      background: #fff0f0;
+      border: 1px solid #efb8b8;
+      border-radius: 10px;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 1050px) {
+      .controls { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
+    }
+
+    @media (max-width: 650px) {
+      .shell { padding: 9px; border-radius: 10px; }
+      .controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 9px;
+      }
+      .iteration-control { grid-column: 1 / -1; }
+      #plot { height: 760px; min-height: 650px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="shell">
+    <h1>Evolution of Reconstructed Material Fields</h1>
+    <p class="subtitle">
+      PI-UNet prediction compared with ground truth during optimization.
+    </p>
+
+    <section class="controls" aria-label="Viewer controls">
+      <div class="control">
+        <label for="fieldSelect">FIELD</label>
+        <select id="fieldSelect">
+          <option value="mu">μ = 2(C10 + C01)</option>
+          <option value="C10">C10</option>
+          <option value="C01">C01</option>
+        </select>
+      </div>
+
+      <div class="control iteration-control">
+        <label for="iterationSlider">
+          ITERATION: <span id="iterationLabel">loading…</span>
+        </label>
+        <input id="iterationSlider" type="range" min="0" max="0" step="1" value="0">
+      </div>
+
+      <div class="control">
+        <label>ANIMATION</label>
+        <div class="play-row">
+          <button id="playButton" type="button">Play</button>
+          <button id="resetButton" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="control">
+        <label for="xSlider">SAGITTAL / X</label>
+        <input id="xSlider" type="range" min="0" max="1" step="1" value="0">
+      </div>
+
+      <div class="control">
+        <label for="ySlider">CORONAL / Y</label>
+        <input id="ySlider" type="range" min="0" max="1" step="1" value="0">
+      </div>
+
+      <div class="control">
+        <label for="zSlider">AXIAL / Z</label>
+        <input id="zSlider" type="range" min="0" max="1" step="1" value="0">
+      </div>
+
+      <div class="control">
+        <label for="isoToggle">3D CONTEXT</label>
+        <select id="isoToggle">
+          <option value="on">Slices + isosurfaces</option>
+          <option value="off">Slices only</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="status">
+      <span id="loadingStatus">Loading manifest…</span>
+      <span id="frameStatus"></span>
+    </div>
+
+    <div id="plot" role="img" aria-label="Interactive predicted and ground-truth material fields"></div>
+    <div id="errorBox"></div>
+  </main>
+
+<script>
+"use strict";
+
+const MANIFEST_URL = "./manifest.json";
+const PLAY_INTERVAL_MS = 500;
+const DEFAULT_ISO = true;
+
+const state = {
+  manifest: null,
+  reference: null,
+  currentFrame: null,
+  frameCache: new Map(),
+  playTimer: null,
+  requestToken: 0,
+  cameras: {scene: null, scene2: null}
+};
+
+const el = {
+  fieldSelect: document.getElementById("fieldSelect"),
+  iterationSlider: document.getElementById("iterationSlider"),
+  iterationLabel: document.getElementById("iterationLabel"),
+  playButton: document.getElementById("playButton"),
+  resetButton: document.getElementById("resetButton"),
+  xSlider: document.getElementById("xSlider"),
+  ySlider: document.getElementById("ySlider"),
+  zSlider: document.getElementById("zSlider"),
+  isoToggle: document.getElementById("isoToggle"),
+  loadingStatus: document.getElementById("loadingStatus"),
+  frameStatus: document.getElementById("frameStatus"),
+  plot: document.getElementById("plot"),
+  errorBox: document.getElementById("errorBox")
+};
+
+function showError(error) {
+  console.error(error);
+  el.errorBox.style.display = "block";
+  el.errorBox.textContent =
+    "The convergence viewer could not be loaded.\n\n" +
+    String(error && error.stack ? error.stack : error);
+  el.loadingStatus.textContent = "Viewer failed to load.";
+}
+
+function product(values) {
+  return values.reduce((a, b) => a * b, 1);
+}
+
+async function fetchCompressedFloat32(url, expectedFloatCount) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: HTTP ${response.status}`);
+  }
+
+  const compressed = new Uint8Array(await response.arrayBuffer());
+  const raw = window.pako.inflate(compressed);
+
+  if (raw.byteLength !== expectedFloatCount * 4) {
+    throw new Error(
+      `Unexpected decoded size for ${url}. Expected ` +
+      `${expectedFloatCount * 4} bytes, got ${raw.byteLength}.`
+    );
+  }
+
+  const alignedBuffer = raw.buffer.slice(
+    raw.byteOffset,
+    raw.byteOffset + raw.byteLength
+  );
+  return new Float32Array(alignedBuffer);
+}
+
+function splitTwoFields(packed, voxelCount) {
+  return {
+    C10: packed.slice(0, voxelCount),
+    C01: packed.slice(voxelCount, 2 * voxelCount)
+  };
+}
+
+function fieldFromPair(pair, fieldName) {
+  if (fieldName === "C10") return pair.C10;
+  if (fieldName === "C01") return pair.C01;
+
+  const out = new Float32Array(pair.C10.length);
+  for (let i = 0; i < out.length; i++) {
+    out[i] = 2.0 * (pair.C10[i] + pair.C01[i]);
+  }
+  return out;
+}
+
+function flatIndex(i, j, k, shape) {
+  return (i * shape[1] + j) * shape[2] + k;
+}
+
+function make2D(rows, cols, callback) {
+  const output = new Array(rows);
+  for (let r = 0; r < rows; r++) {
+    const row = new Array(cols);
+    for (let c = 0; c < cols; c++) {
+      row[c] = callback(r, c);
+    }
+    output[r] = row;
+  }
+  return output;
+}
+
+function maskedValue(field, mask, idx) {
+  return mask[idx] > 0.5 ? field[idx] : NaN;
+}
+
+function sliceTrace(field, mask, axis, sliceIndex, axes, shape, options) {
+  const [nx, ny, nz] = shape;
+  const [xAxis, yAxis, zAxis] = axes;
+
+  let x, y, z, surfacecolor;
+
+  if (axis === "x") {
+    x = make2D(ny, nz, () => xAxis[sliceIndex]);
+    y = make2D(ny, nz, (j) => yAxis[j]);
+    z = make2D(ny, nz, (_, k) => zAxis[k]);
+    surfacecolor = make2D(
+      ny, nz,
+      (j, k) => maskedValue(field, mask, flatIndex(sliceIndex, j, k, shape))
+    );
+  } else if (axis === "y") {
+    x = make2D(nx, nz, (i) => xAxis[i]);
+    y = make2D(nx, nz, () => yAxis[sliceIndex]);
+    z = make2D(nx, nz, (_, k) => zAxis[k]);
+    surfacecolor = make2D(
+      nx, nz,
+      (i, k) => maskedValue(field, mask, flatIndex(i, sliceIndex, k, shape))
+    );
+  } else {
+    x = make2D(nx, ny, (i) => xAxis[i]);
+    y = make2D(nx, ny, (_, j) => yAxis[j]);
+    z = make2D(nx, ny, () => zAxis[sliceIndex]);
+    surfacecolor = make2D(
+      nx, ny,
+      (i, j) => maskedValue(field, mask, flatIndex(i, j, sliceIndex, shape))
+    );
+  }
+
+  return {
+    type: "surface",
+    x,
+    y,
+    z,
+    surfacecolor,
+    colorscale: "Turbo",
+    cmin: options.cmin,
+    cmax: options.cmax,
+    opacity: 0.96,
+    showscale: options.showscale,
+    colorbar: options.showscale ? {
+      title: options.colorbarTitle,
+      thickness: 14,
+      len: 0.78,
+      xpad: 4
+    } : undefined,
+    hovertemplate:
+      "x=%{x:.4g}<br>" +
+      "y=%{y:.4g}<br>" +
+      "z=%{z:.4g}<br>" +
+      "value=%{surfacecolor:.5g}<extra></extra>",
+    scene: options.scene
+  };
+}
+
+function isosurfaceTrace(field, mask, axes, shape, options) {
+  const [nx, ny, nz] = shape;
+  const [xAxis, yAxis, zAxis] = axes;
+  const voxelCount = nx * ny * nz;
+
+  const x = new Float32Array(voxelCount);
+  const y = new Float32Array(voxelCount);
+  const z = new Float32Array(voxelCount);
+  const value = new Float32Array(voxelCount);
+
+  let q = 0;
+  for (let i = 0; i < nx; i++) {
+    for (let j = 0; j < ny; j++) {
+      for (let k = 0; k < nz; k++) {
+        const idx = flatIndex(i, j, k, shape);
+        x[q] = xAxis[i];
+        y[q] = yAxis[j];
+        z[q] = zAxis[k];
+        value[q] = mask[idx] > 0.5 ? field[idx] : NaN;
+        q++;
+      }
+    }
+  }
+
+  return {
+    type: "isosurface",
+    x,
+    y,
+    z,
+    value,
+    isomin: options.isomin,
+    isomax: options.isomax,
+    surface: {count: 4},
+    opacity: 0.11,
+    caps: {
+      x: {show: false},
+      y: {show: false},
+      z: {show: false}
+    },
+    colorscale: "Turbo",
+    showscale: false,
+    hoverinfo: "skip",
+    scene: options.scene
+  };
+}
+
+function sceneDefinition(axes, camera) {
+  const [xAxis, yAxis, zAxis] = axes;
+  return {
+    xaxis: {
+      title: "X",
+      range: [xAxis[0], xAxis[xAxis.length - 1]],
+      showspikes: false
+    },
+    yaxis: {
+      title: "Y",
+      range: [yAxis[0], yAxis[yAxis.length - 1]],
+      showspikes: false
+    },
+    zaxis: {
+      title: "Z",
+      range: [zAxis[0], zAxis[zAxis.length - 1]],
+      showspikes: false
+    },
+    aspectmode: "data",
+    camera: camera || {eye: {x: 1.55, y: 1.55, z: 1.15}},
+    uirevision: "piunet-fixed-camera"
+  };
+}
+
+function fieldLabel(fieldName) {
+  return fieldName === "mu" ? "μ" : fieldName;
+}
+
+async function loadReference() {
+  const voxelCount = product(state.manifest.shape);
+  const packed = await fetchCompressedFloat32(
+    state.manifest.reference.file,
+    voxelCount * 3
+  );
+
+  state.reference = {
+    C10: packed.slice(0, voxelCount),
+    C01: packed.slice(voxelCount, 2 * voxelCount),
+    mask: packed.slice(2 * voxelCount, 3 * voxelCount)
+  };
+}
+
+async function getFrame(frameIndex) {
+  if (state.frameCache.has(frameIndex)) {
+    return state.frameCache.get(frameIndex);
+  }
+
+  const descriptor = state.manifest.frames[frameIndex];
+  const voxelCount = product(state.manifest.shape);
+  const packed = await fetchCompressedFloat32(descriptor.file, voxelCount * 2);
+  const frame = splitTwoFields(packed, voxelCount);
+  state.frameCache.set(frameIndex, frame);
+
+  if (state.frameCache.size > 6) {
+    const firstKey = state.frameCache.keys().next().value;
+    if (firstKey !== frameIndex) state.frameCache.delete(firstKey);
+  }
+
+  return frame;
+}
+
+function prefetchNeighbor(frameIndex) {
+  for (const index of [frameIndex - 1, frameIndex + 1]) {
+    if (
+      index >= 0 &&
+      index < state.manifest.frames.length &&
+      !state.frameCache.has(index)
+    ) {
+      getFrame(index).catch(() => {});
+    }
+  }
+}
+
+function captureCameras() {
+  const layout = el.plot.layout;
+  if (!layout) return;
+  if (layout.scene && layout.scene.camera) state.cameras.scene = layout.scene.camera;
+  if (layout.scene2 && layout.scene2.camera) state.cameras.scene2 = layout.scene2.camera;
+}
+
+async function render() {
+  const token = ++state.requestToken;
+  const frameIndex = Number(el.iterationSlider.value);
+  const descriptor = state.manifest.frames[frameIndex];
+
+  el.iterationLabel.textContent = descriptor.iteration;
+  el.loadingStatus.textContent = `Loading iteration ${descriptor.iteration}…`;
+  captureCameras();
+
+  const frame = await getFrame(frameIndex);
+  if (token !== state.requestToken) return;
+
+  const fieldName = el.fieldSelect.value;
+  const label = fieldLabel(fieldName);
+  const prediction = fieldFromPair(frame, fieldName);
+  const groundTruth = fieldFromPair(state.reference, fieldName);
+  const mask = state.reference.mask;
+  const shape = state.manifest.shape;
+  const axes = [
+    state.manifest.axes.x,
+    state.manifest.axes.y,
+    state.manifest.axes.z
+  ];
+
+  const xIndex = Number(el.xSlider.value);
+  const yIndex = Number(el.ySlider.value);
+  const zIndex = Number(el.zSlider.value);
+  const [cmin, cmax] = state.manifest.color_limits[fieldName];
+  const includeIso = el.isoToggle.value === "on";
+  const traces = [];
+
+  if (includeIso) {
+    const isoMin = cmin + 0.24 * (cmax - cmin);
+    const isoMax = cmin + 0.94 * (cmax - cmin);
+    traces.push(
+      isosurfaceTrace(prediction, mask, axes, shape, {
+        isomin: isoMin,
+        isomax: isoMax,
+        scene: "scene"
+      })
+    );
+  }
+
+  traces.push(
+    sliceTrace(prediction, mask, "x", xIndex, axes, shape, {
+      cmin, cmax, showscale: false, scene: "scene"
+    }),
+    sliceTrace(prediction, mask, "y", yIndex, axes, shape, {
+      cmin, cmax, showscale: false, scene: "scene"
+    }),
+    sliceTrace(prediction, mask, "z", zIndex, axes, shape, {
+      cmin, cmax, showscale: false, scene: "scene"
+    })
+  );
+
+  if (includeIso) {
+    const isoMin = cmin + 0.24 * (cmax - cmin);
+    const isoMax = cmin + 0.94 * (cmax - cmin);
+    traces.push(
+      isosurfaceTrace(groundTruth, mask, axes, shape, {
+        isomin: isoMin,
+        isomax: isoMax,
+        scene: "scene2"
+      })
+    );
+  }
+
+  traces.push(
+    sliceTrace(groundTruth, mask, "x", xIndex, axes, shape, {
+      cmin, cmax, showscale: false, scene: "scene2"
+    }),
+    sliceTrace(groundTruth, mask, "y", yIndex, axes, shape, {
+      cmin, cmax, showscale: false, scene: "scene2"
+    }),
+    sliceTrace(groundTruth, mask, "z", zIndex, axes, shape, {
+      cmin,
+      cmax,
+      showscale: true,
+      colorbarTitle: label,
+      scene: "scene2"
+    })
+  );
+
+  const layout = {
+    margin: {l: 0, r: 8, t: 58, b: 0},
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(0,0,0,0)",
+    showlegend: false,
+    title: {
+      text:
+        `<b>${label} prediction</b> — iteration ${descriptor.iteration}` +
+        `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>${label} ground truth</b>`,
+      x: 0.5,
+      xanchor: "center",
+      font: {size: 17}
+    },
+    scene: {
+      ...sceneDefinition(axes, state.cameras.scene),
+      domain: {x: [0.0, 0.475], y: [0, 1]}
+    },
+    scene2: {
+      ...sceneDefinition(axes, state.cameras.scene2),
+      domain: {x: [0.525, 1.0], y: [0, 1]}
+    }
+  };
+
+  await Plotly.react(el.plot, traces, layout, {
+    responsive: true,
+    displaylogo: false,
+    scrollZoom: true,
+    modeBarButtonsToRemove: [
+      "toImage",
+      "sendDataToCloud",
+      "lasso2d",
+      "select2d"
+    ]
+  });
+
+  el.loadingStatus.textContent =
+    `Loaded ${state.manifest.frames.length} training snapshots.`;
+  el.frameStatus.textContent =
+    `${label} • iteration ${descriptor.iteration} • ` +
+    `${shape[0]}×${shape[1]}×${shape[2]} web volume`;
+
+  prefetchNeighbor(frameIndex);
+}
+
+function stopPlayback() {
+  if (state.playTimer !== null) {
+    clearInterval(state.playTimer);
+    state.playTimer = null;
+  }
+  el.playButton.textContent = "Play";
+}
+
+function togglePlayback() {
+  if (state.playTimer !== null) {
+    stopPlayback();
+    return;
+  }
+
+  el.playButton.textContent = "Pause";
+  state.playTimer = setInterval(() => {
+    const maxIndex = state.manifest.frames.length - 1;
+    const current = Number(el.iterationSlider.value);
+    el.iterationSlider.value = String(current >= maxIndex ? 0 : current + 1);
+    render().catch(showError);
+  }, PLAY_INTERVAL_MS);
+}
+
+function resetViewer() {
+  stopPlayback();
+  el.fieldSelect.value = "mu";
+  el.iterationSlider.value = "0";
+
+  const [nx, ny, nz] = state.manifest.shape;
+  el.xSlider.value = String(Math.floor(nx / 2));
+  el.ySlider.value = String(Math.floor(ny / 2));
+  el.zSlider.value = String(Math.floor(nz / 2));
+  el.isoToggle.value = DEFAULT_ISO ? "on" : "off";
+
+  state.cameras.scene = null;
+  state.cameras.scene2 = null;
+  render().catch(showError);
+}
+
+function attachEvents() {
+  for (const control of [
+    el.fieldSelect,
+    el.iterationSlider,
+    el.xSlider,
+    el.ySlider,
+    el.zSlider,
+    el.isoToggle
+  ]) {
+    control.addEventListener("input", () => {
+      if (control === el.iterationSlider) stopPlayback();
+      render().catch(showError);
+    });
+  }
+
+  el.playButton.addEventListener("click", togglePlayback);
+  el.resetButton.addEventListener("click", resetViewer);
+  window.addEventListener("beforeunload", stopPlayback);
+}
+
+async function initialize() {
+  if (!window.Plotly) throw new Error("Plotly did not load.");
+  if (!window.pako) throw new Error("pako did not load.");
+
+  const response = await fetch(MANIFEST_URL);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${MANIFEST_URL}: HTTP ${response.status}`);
+  }
+
+  state.manifest = await response.json();
+  const [nx, ny, nz] = state.manifest.shape;
+
+  el.iterationSlider.max = String(state.manifest.frames.length - 1);
+  el.iterationSlider.value = "0";
+  el.xSlider.max = String(nx - 1);
+  el.ySlider.max = String(ny - 1);
+  el.zSlider.max = String(nz - 1);
+  el.xSlider.value = String(Math.floor(nx / 2));
+  el.ySlider.value = String(Math.floor(ny / 2));
+  el.zSlider.value = String(Math.floor(nz / 2));
+  el.isoToggle.value = DEFAULT_ISO ? "on" : "off";
+
+  attachEvents();
+  el.loadingStatus.textContent = "Loading ground-truth fields…";
+  await loadReference();
+  await render();
+}
+
+initialize().catch(showError);
+</script>
+</body>
+</html>
