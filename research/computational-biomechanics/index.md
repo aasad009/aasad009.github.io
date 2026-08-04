@@ -6,7 +6,7 @@ dir: ltr
 alternate_url: /fa/research/computational-biomechanics/
 title: Computational Biomechanics for Nonlinear Tissue Characterization
 seo_title: Computational Biomechanics, Tissue Mechanics & Medical Imaging | Amirreza Asadi
-description: An overview of Amirreza Asadi’s research in computational biomechanics, nonlinear soft-tissue mechanics, medical imaging, inverse problems, and physics-informed AI.
+description: An overview of Amirreza Asadi’s ongoing research program in computational biomechanics, nonlinear soft-tissue mechanics, inverse methods, medical imaging, uncertainty-aware characterization, and physics-informed AI.
 kicker: Research overview
 lede: Computational biomechanics combines continuum mechanics, numerical simulation, imaging, and data-driven inference to quantify how biological tissues deform and to recover the constitutive properties that govern that deformation.
 topic_terms:
@@ -41,6 +41,13 @@ A central challenge is that several models or parameter combinations can produce
 Volumetric imaging can provide anatomical geometry and motion fields, but converting those measurements into quantitative material properties requires a mechanical model. Inverse elastography and mechanics-based imaging integrate deformation data with constitutive laws and boundary information to estimate tissue properties.
 
 My work focuses on spatially resolved nonlinear characterization rather than only effective stiffness. This includes stress-constrained learning, voxel-wise parameter recovery, and mechanics-informed features that may help distinguish heterogeneous or pathological tissue regions.
+
+
+## Ongoing research directions
+
+My current work is organized as a connected research program rather than a single project. The shared objective is to recover reliable, spatially resolved mechanical information from deformation and imaging data while remaining explicit about identifiability, uncertainty, and model assumptions.
+
+Active directions include inverse tissue mechanics, deformation-informed medical and ultrasound imaging, uncertainty-aware constitutive characterization, comparison and compatibility of nonlinear material models, experimental and robotic measurement workflows, and mechanics-informed machine learning. Individual projects may emphasize different data sources or computational tools, but they are linked by the same goal: converting observed deformation into interpretable information about tissue mechanics.
 
 ## Research tools and methods
 

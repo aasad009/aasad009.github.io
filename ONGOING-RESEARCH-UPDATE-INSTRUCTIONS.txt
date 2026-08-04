@@ -1,0 +1,26 @@
+ONGOING RESEARCH CARD UPDATE
+
+This update corrects the third Research Themes card.
+
+It now:
+- represents the broader ongoing computational-biomechanics research program;
+- no longer presents constitutive compatibility atlases as the only active project;
+- uses a matching workflow visual covering tissue modeling, deformation inference,
+  voxel-wise mechanics, uncertainty analysis, and constitutive-model comparison;
+- updates both English and Persian homepage cards;
+- broadens both English and Persian computational-biomechanics topic pages;
+- preserves all existing multilingual SEO, publication pages, graphics, and styling.
+
+Upload the extracted patch contents to the repository root, preserving folders.
+
+Files changed:
+- _config.yml
+- index.html
+- fa/index.html
+- research/computational-biomechanics/index.md
+- fa/research/computational-biomechanics/index.md
+- assets/css/main.css
+- assets/images/research-ongoing-computational-platform.png
+
+Suggested commit message:
+Broaden ongoing research program card
