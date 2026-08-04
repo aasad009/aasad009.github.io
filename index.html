@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="/Logo.png" />
+  <link rel="apple-touch-icon" href="/Logo.png" />
 
   <title>Amirreza Asadi | Computational Biomechanics & Physics-Informed AI</title>
   <meta name="description" content="Amirreza Asadi is a PhD candidate at UC Riverside working on computational biomechanics, hyperelasticity, inverse problems, medical imaging, and physics-informed AI." />
@@ -131,8 +133,22 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
       font-weight: 800;
       letter-spacing: -0.02em;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      display: block;
+      flex: 0 0 auto;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.22);
     }
 
     .nav-links {
@@ -867,7 +883,10 @@
 <body>
   <nav class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="#top">Amirreza Asadi</a>
+      <a class="brand" href="#top" aria-label="Amirreza Asadi homepage">
+        <img class="brand-logo" src="/Logo.png" alt="" width="34" height="34" />
+        <span>Amirreza Asadi</span>
+      </a>
       <div class="nav-links">
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
