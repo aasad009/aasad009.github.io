@@ -1,0 +1,33 @@
+{% if page.layout == "publication" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "author": [{% for author in page.authors %}{"@type":"Person","name":{{ author | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
+  "datePublished": {{ page.year | append: "-01-01" | jsonify }},
+  "isPartOf": {"@type":"Periodical","name":{{ page.journal | jsonify }}},
+  "sameAs": {{ page.doi | prepend: "https://doi.org/" | jsonify }},
+  "url": {{ page.url | absolute_url | jsonify }}
+}
+</script>
+{% elsif page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfilePage",
+  "url":{{ site.url | append: "/" | jsonify }},
+  "name":{{ page.title | jsonify }},
+  "mainEntity":{
+    "@type":"Person",
+    "name":{{ site.author.name | jsonify }},
+    "url":{{ site.url | append: "/" | jsonify }},
+    "image":{{ site.default_image | absolute_url | jsonify }},
+    "jobTitle":"PhD Candidate in Mechanical Engineering",
+    "affiliation":{"@type":"CollegeOrUniversity","name":"University of California, Riverside"},
+    "sameAs":["https://orcid.org/0009-0004-6941-8808","https://github.com/aasad009","https://www.linkedin.com/in/amirreza-asadi/","https://scholar.google.com/citations?user=qzFWsWIAAAAJ&hl=en"]
+  }
+}
+</script>
+{% endif %}

@@ -1,0 +1,13 @@
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Amirreza Asadi homepage">
+      <img class="brand-logo" src="{{ '/Logo.png' | relative_url }}" alt="" width="34" height="34" />
+      <span>{{ site.author.name }}</span>
+    </a>
+    <div class="nav-links">
+      {% for item in site.data.navigation %}
+      <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>

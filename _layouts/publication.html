@@ -1,0 +1,69 @@
+---
+layout: default
+---
+<main>
+  <header class="paper-hero">
+    <div class="container">
+      <a class="breadcrumb" href="{{ '/#publications' | relative_url }}">← Publications <span>/</span> {{ page.short_title }}</a>
+      <div class="journal-badge">{{ page.journal }} · {{ page.year }}</div>
+      <h1 class="citation_title">{{ page.title }}</h1>
+      <p class="authors citation_author">{{ page.authors | join: ' · ' }}</p>
+      <p class="citation-line">{{ page.journal }} ({{ page.year }}). DOI: {{ page.doi }}.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer">Publisher / DOI</a>
+        <a class="button" href="#citation">Cite this paper</a>
+        {% if page.code_url %}<a class="button" href="{{ page.code_url }}" target="_blank" rel="noopener noreferrer">Code</a>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="container visual-card">
+    {% include {{ page.visual_include }} %}
+  </div>
+
+  <section id="abstract">
+    <div class="container section-grid">
+      <h2>Abstract</h2>
+      <div class="abstract">{{ page.abstract_html }}</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cards">
+        <article class="card">
+          <h3>Key contributions</h3>
+          <ul>{% for item in page.contributions %}<li>{{ item }}</li>{% endfor %}</ul>
+        </article>
+        <article class="card">
+          <h3>Method snapshot</h3>
+          <div class="methods">
+            {% for item in page.methods %}
+            <div class="method-item"><strong>{{ item.label }}</strong><span>{{ item.value }}</span></div>
+            {% endfor %}
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="citation">
+    <div class="container section-grid">
+      <div>
+        <h2>Citation</h2>
+        <p style="color:var(--muted);">Use the published DOI as the authoritative identifier.</p>
+      </div>
+      <div class="citation-card">
+        <div class="copy-row"><strong>BibTeX</strong><button class="copy-button" type="button" data-copy="bibtex">Copy BibTeX</button></div>
+        <pre id="bibtex">{{ page.bibtex }}</pre>
+      </div>
+    </div>
+  </section>
+
+  {% if page.related_slug %}
+  {% assign related = site.publications | where: 'slug', page.related_slug | first %}
+  {% if related %}
+  <section><div class="container"><a class="related" href="{{ related.url | relative_url }}"><small>{{ page.related_label }}</small><strong>{{ related.title }} →</strong></a></div></section>
+  {% endif %}
+  {% endif %}
+</main>

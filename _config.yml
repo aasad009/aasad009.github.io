@@ -1,0 +1,23 @@
+title: Amirreza Asadi
+description: Computational biomechanics, nonlinear tissue mechanics, inverse problems, medical imaging, and physics-informed AI.
+url: https://amirreza-asadi.com
+baseurl: ""
+domain: amirreza-asadi.com
+default_image: /profile.png
+author:
+  name: Amirreza Asadi
+collections:
+  publications:
+    output: true
+    permalink: /publications/:name/
+defaults:
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: publication
+exclude:
+  - README.md
+  - TEMPLATE-GUIDE.md
+  - Gemfile
+  - Gemfile.lock
