@@ -1,84 +1,47 @@
 ---
 layout: default
 ---
+{% assign is_fa = false %}{% if page.lang == 'fa' %}{% assign is_fa = true %}{% endif %}
 <main>
   <header class="paper-hero">
     <div class="container">
-      <a class="breadcrumb" href="{{ '/#publications' | relative_url }}">← Publications <span>/</span> {{ page.short_title }}</a>
+      <a class="breadcrumb" href="{% if is_fa %}{{ '/fa/#publications' | relative_url }}{% else %}{{ '/#publications' | relative_url }}{% endif %}">{% if is_fa %}← مقالات{% else %}← Publications{% endif %} <span>/</span> {{ page.short_title }}</a>
       <div class="journal-badge">{{ page.journal }} · {{ page.year }}</div>
       <h1 class="citation_title">{{ page.title }}</h1>
+      {% if is_fa and page.official_title %}<p class="official-title" lang="en" dir="ltr">{{ page.official_title }}</p>{% endif %}
       <p class="authors citation_author">{{ page.authors | join: ' · ' }}</p>
       <p class="citation-line">{{ page.journal }} ({{ page.year }}). DOI: {{ page.doi }}.</p>
       <div class="hero-actions">
-        <a class="button primary" href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer">Publisher / DOI</a>
-        <a class="button" href="#citation">Cite this paper</a>
-        {% if page.code_url %}<a class="button" href="{{ page.code_url }}" target="_blank" rel="noopener noreferrer">Code</a>{% endif %}
+        <a class="button primary" href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer">{% if is_fa %}صفحه ناشر / DOI{% else %}Publisher / DOI{% endif %}</a>
+        <a class="button" href="#citation">{% if is_fa %}استناد به مقاله{% else %}Cite this paper{% endif %}</a>
+        {% if page.code_url %}<a class="button" href="{{ page.code_url }}" target="_blank" rel="noopener noreferrer">{% if is_fa %}کد{% else %}Code{% endif %}</a>{% endif %}
       </div>
     </div>
   </header>
 
   {% if page.graphical_abstract %}
   <figure class="container visual-card publication-figure">
-    <img
-      class="graphical-abstract"
-      src="{{ page.graphical_abstract | relative_url }}"
-      alt="{{ page.graphical_abstract_alt | default: page.title | escape }}"
-      width="1664"
-      height="936"
-      loading="eager"
-      decoding="async"
-    />
-    <figcaption>Graphical overview of the study workflow and outcome.</figcaption>
+    <img class="graphical-abstract" src="{{ page.graphical_abstract | relative_url }}" alt="{{ page.graphical_abstract_alt | default: page.title | escape }}" width="1664" height="936" loading="eager" decoding="async" />
+    <figcaption>{% if is_fa %}نمای گرافیکی ساده از جریان کار و خروجی پژوهش.{% else %}Graphical overview of the study workflow and outcome.{% endif %}</figcaption>
   </figure>
-  {% elsif page.visual_include %}
-  <div class="container visual-card">
-    {% include {{ page.visual_include }} %}
-  </div>
   {% endif %}
 
-  <section id="abstract">
-    <div class="container section-grid">
-      <h2>Abstract</h2>
-      <div class="abstract">{{ page.abstract_html }}</div>
-    </div>
-  </section>
+  <section id="abstract"><div class="container section-grid"><h2>{% if is_fa %}خلاصه پژوهش{% else %}Abstract{% endif %}</h2><div class="abstract">{{ page.abstract_html }}</div></div></section>
 
-  <section>
-    <div class="container">
-      <div class="cards">
-        <article class="card">
-          <h3>Key contributions</h3>
-          <ul>{% for item in page.contributions %}<li>{{ item }}</li>{% endfor %}</ul>
-        </article>
-        <article class="card">
-          <h3>Method snapshot</h3>
-          <div class="methods">
-            {% for item in page.methods %}
-            <div class="method-item"><strong>{{ item.label }}</strong><span>{{ item.value }}</span></div>
-            {% endfor %}
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="citation">
-    <div class="container section-grid">
-      <div>
-        <h2>Citation</h2>
-        <p style="color:var(--muted);">Use the published DOI as the authoritative identifier.</p>
-      </div>
-      <div class="citation-card">
-        <div class="copy-row"><strong>BibTeX</strong><button class="copy-button" type="button" data-copy="bibtex">Copy BibTeX</button></div>
-        <pre id="bibtex">{{ page.bibtex }}</pre>
-      </div>
-    </div>
-  </section>
-
-  {% if page.related_slug %}
-  {% assign related = site.publications | where: 'slug', page.related_slug | first %}
-  {% if related %}
-  <section><div class="container"><a class="related" href="{{ related.url | relative_url }}"><small>{{ page.related_label }}</small><strong>{{ related.title }} →</strong></a></div></section>
+  {% if page.seo_sections %}
+  <section class="topic-explainer"><div class="container prose-stack">
+    {% for section in page.seo_sections %}<article class="prose-card"><h2>{{ section.heading }}</h2>{{ section.body }}</article>{% endfor %}
+  </div></section>
   {% endif %}
-  {% endif %}
+
+  <section><div class="container"><div class="cards">
+    <article class="card"><h3>{% if is_fa %}دستاوردهای اصلی{% else %}Key contributions{% endif %}</h3><ul>{% for item in page.contributions %}<li>{{ item }}</li>{% endfor %}</ul></article>
+    <article class="card"><h3>{% if is_fa %}خلاصه روش{% else %}Method snapshot{% endif %}</h3><div class="methods">{% for item in page.methods %}<div class="method-item"><strong>{{ item.label }}</strong><span>{{ item.value }}</span></div>{% endfor %}</div></article>
+  </div></div></section>
+
+  {% if page.funding %}<section class="funding-section"><div class="container section-grid"><h2>{% if is_fa %}حمایت مالی پژوهش{% else %}Research funding{% endif %}</h2><p class="funding-text">{{ page.funding }}</p></div></section>{% endif %}
+
+  <section id="citation"><div class="container section-grid"><div><h2>{% if is_fa %}استناد{% else %}Citation{% endif %}</h2><p style="color:var(--muted);">{% if is_fa %}شناسه DOI مرجع رسمی مقاله است.{% else %}Use the published DOI as the authoritative identifier.{% endif %}</p></div><div class="citation-card"><div class="copy-row"><strong>BibTeX</strong><button class="copy-button" type="button" data-copy="bibtex">{% if is_fa %}کپی BibTeX{% else %}Copy BibTeX{% endif %}</button></div><pre id="bibtex" dir="ltr">{{ page.bibtex }}</pre></div></div></section>
+
+  {% if page.related_url %}<section><div class="container"><a class="related" href="{{ page.related_url | relative_url }}"><small>{{ page.related_label }}</small><strong>{{ page.related_title }} →</strong></a></div></section>{% elsif page.related_slug %}{% assign related = site.publications | where: 'slug', page.related_slug | first %}{% if related %}<section><div class="container"><a class="related" href="{{ related.url | relative_url }}"><small>{{ page.related_label }}</small><strong>{{ related.title }} →</strong></a></div></section>{% endif %}{% endif %}
 </main>

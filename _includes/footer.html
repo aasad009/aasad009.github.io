@@ -1,6 +1,11 @@
 <footer>
   <div class="container footer-inner">
+    {% if page.lang == 'fa' %}
+    <span>© {{ site.time | date: '%Y' }} امیررضا اسدی</span>
+    <span><a href="{{ '/fa/' | relative_url }}">{{ site.domain }}</a></span>
+    {% else %}
     <span>© {{ site.time | date: '%Y' }} {{ site.author.name }}</span>
     <span><a href="{{ '/' | relative_url }}">{{ site.domain }}</a></span>
+    {% endif %}
   </div>
 </footer>

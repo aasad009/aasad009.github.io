@@ -1,34 +1,125 @@
-{% if page.layout == "publication" %}
+{% assign person_id = site.url | append: '/#person' %}
+{% if page.url == '/' %}
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "ScholarlyArticle",
-  "headline": {{ page.title | jsonify }},
-  "description": {{ page.description | jsonify }},{% if page.graphical_abstract %}
-  "image": {{ page.graphical_abstract | absolute_url | jsonify }},{% endif %}
-  "author": [{% for author in page.authors %}{"@type":"Person","name":{{ author | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],
-  "datePublished": {{ page.year | append: "-01-01" | jsonify }},
-  "isPartOf": {"@type":"Periodical","name":{{ page.journal | jsonify }}},
-  "sameAs": {{ page.doi | prepend: "https://doi.org/" | jsonify }},
-  "url": {{ page.url | absolute_url | jsonify }}
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"{{ site.url }}/#website",
+      "name":"Amirreza Asadi",
+      "alternateName":["Amir Asadi","امیررضا اسدی","امیر اسدی","amirreza-asadi.com"],
+      "url":"{{ site.url }}/",
+      "inLanguage":["en","fa"]
+    },
+    {
+      "@type":"Person",
+      "@id":"{{ person_id }}",
+      "name":"Amirreza Asadi",
+      "alternateName":["Amir Asadi","A. Asadi","امیررضا اسدی","امیر اسدی"],
+      "url":"{{ site.url }}/",
+      "image":"{{ site.default_image | absolute_url }}",
+      "jobTitle":"PhD Candidate in Mechanical Engineering",
+      "description":"Computational biomechanics researcher working on hyperelasticity, inverse elastography, medical imaging, and physics-informed AI.",
+      "email":"mailto:{{ site.author.email }}",
+      "identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"{{ site.author.orcid }}"},
+      "affiliation":{"@type":"CollegeOrUniversity","name":"University of California, Riverside"},
+      "alumniOf":[{"@type":"CollegeOrUniversity","name":"University of California, Riverside"},{"@type":"CollegeOrUniversity","name":"Sharif University of Technology"}],
+      "award":["Outstanding Poster Presentation Award, Annual Research Symposium, University of California, Riverside, 2026"],
+      "knowsAbout":["Computational biomechanics","Hyperelastic material characterization","Inverse elastography","Nonlinear tissue mechanics","Physics-informed machine learning","Medical imaging","Optimal experimental design"],
+      "sameAs":["https://orcid.org/{{ site.author.orcid }}","https://github.com/aasad009","https://www.linkedin.com/in/amirreza-asadi/","https://scholar.google.com/citations?user=qzFWsWIAAAAJ&hl=en"]
+    },
+    {
+      "@type":"ProfilePage",
+      "@id":"{{ site.url }}/#profilepage",
+      "url":"{{ site.url }}/",
+      "name":{{ page.title | jsonify }},
+      "inLanguage":"en",
+      "mainEntity":{"@id":"{{ person_id }}"},
+      "primaryImageOfPage":"{{ site.default_image | absolute_url }}"
+    }
+  ]
 }
 </script>
-{% elsif page.url == "/" %}
+{% elsif page.url == '/fa/' %}
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"ProfilePage",
-  "url":{{ site.url | append: "/" | jsonify }},
+  "@id":"{{ page.url | absolute_url }}#profilepage",
+  "url":{{ page.url | absolute_url | jsonify }},
   "name":{{ page.title | jsonify }},
+  "description":{{ page.description | jsonify }},
+  "inLanguage":"fa",
   "mainEntity":{
     "@type":"Person",
-    "name":{{ site.author.name | jsonify }},
-    "url":{{ site.url | append: "/" | jsonify }},
-    "image":{{ site.default_image | absolute_url | jsonify }},
-    "jobTitle":"PhD Candidate in Mechanical Engineering",
+    "@id":"{{ person_id }}",
+    "name":"Amirreza Asadi",
+    "alternateName":["Amir Asadi","امیررضا اسدی","امیر اسدی"],
+    "url":"{{ site.url }}/",
+    "image":"{{ site.default_image | absolute_url }}",
+    "jobTitle":"دانشجوی دکتری مهندسی مکانیک",
     "affiliation":{"@type":"CollegeOrUniversity","name":"University of California, Riverside"},
-    "sameAs":["https://orcid.org/0009-0004-6941-8808","https://github.com/aasad009","https://www.linkedin.com/in/amirreza-asadi/","https://scholar.google.com/citations?user=qzFWsWIAAAAJ&hl=en"]
+    "sameAs":["https://orcid.org/{{ site.author.orcid }}","https://github.com/aasad009","https://www.linkedin.com/in/amirreza-asadi/","https://scholar.google.com/citations?user=qzFWsWIAAAAJ&hl=en"]
+  },
+  "primaryImageOfPage":"{{ site.default_image | absolute_url }}"
+}
+</script>
+{% elsif page.layout == 'publication' and page.lang != 'fa' %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ScholarlyArticle",
+  "@id":"{{ page.url | absolute_url }}#article",
+  "headline":{{ page.title | jsonify }},
+  "description":{{ page.description | jsonify }},
+  "image":{{ page.graphical_abstract | absolute_url | jsonify }},
+  "primaryImageOfPage":{{ page.graphical_abstract | absolute_url | jsonify }},
+  "author":[{"@type":"Person","@id":"{{ person_id }}","name":"Amirreza Asadi","alternateName":["Amir Asadi","A. Asadi","امیررضا اسدی"]},{"@type":"Person","name":"Kaveh Laksari"}],
+  {% if page.publication_date %}"datePublished":{{ page.publication_date | jsonify }},{% endif %}
+  "inLanguage":"en",
+  "isPartOf":{"@type":"Periodical","name":{{ page.journal | jsonify }}},
+  "sameAs":"https://doi.org/{{ page.doi }}",
+  "identifier":"https://doi.org/{{ page.doi }}",
+  "url":{{ page.url | absolute_url | jsonify }},
+  "mainEntityOfPage":{{ page.url | absolute_url | jsonify }}
+}
+</script>
+{% elsif page.layout == 'publication' and page.lang == 'fa' %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "@id":"{{ page.url | absolute_url }}#webpage",
+  "url":{{ page.url | absolute_url | jsonify }},
+  "name":{{ page.title | jsonify }},
+  "description":{{ page.description | jsonify }},
+  "inLanguage":"fa",
+  "primaryImageOfPage":{{ page.graphical_abstract | absolute_url | jsonify }},
+  "author":{"@type":"Person","@id":"{{ person_id }}","name":"Amirreza Asadi","alternateName":"امیررضا اسدی"},
+  "mainEntity":{
+    "@type":"ScholarlyArticle",
+    "headline":{{ page.official_title | jsonify }},
+    "sameAs":"https://doi.org/{{ page.doi }}",
+    "identifier":"https://doi.org/{{ page.doi }}",
+    "author":[{"@id":"{{ person_id }}"},{"@type":"Person","name":"Kaveh Laksari"}]
   }
+}
+</script>
+{% elsif page.layout == 'research-topic' %}
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Article",
+  "@id":"{{ page.url | absolute_url }}#article",
+  "headline":{{ page.title | jsonify }},
+  "description":{{ page.description | jsonify }},
+  "inLanguage":{{ page.lang | jsonify }},
+  "url":{{ page.url | absolute_url | jsonify }},
+  "author":{"@type":"Person","@id":"{{ person_id }}","name":"Amirreza Asadi","alternateName":["Amir Asadi","امیررضا اسدی"]},
+  "mainEntityOfPage":{{ page.url | absolute_url | jsonify }}{% if page.og_image %},
+  "image":{{ page.og_image | absolute_url | jsonify }},
+  "primaryImageOfPage":{{ page.og_image | absolute_url | jsonify }}{% endif %}
 }
 </script>
 {% endif %}

@@ -23,5 +23,3 @@ After deployment:
 2. Resubmit the sitemap in Google Search Console.
 3. Request indexing for the new English and Persian pages.
 4. Use a private/incognito window or Ctrl+Shift+R to bypass cached CSS and metadata.
-
-Optional cleanup: delete OED_GA.png and PIUNET_GA.png after deployment because the site now uses the descriptive files under assets/images/.

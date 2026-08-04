@@ -28,7 +28,7 @@
   const context = canvas.getContext("2d");
   if (!context) return;
 
-  const hero = canvas.closest(".hero") || canvas;
+  const hero = canvas.closest(".hero, .topic-hero") || canvas;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let width = 0;

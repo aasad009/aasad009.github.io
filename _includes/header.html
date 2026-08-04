@@ -1,13 +1,22 @@
-<nav class="nav">
+{% assign is_fa = false %}{% if page.lang == 'fa' %}{% assign is_fa = true %}{% endif %}
+<nav class="nav" aria-label="{% if is_fa %}پیمایش اصلی{% else %}Primary navigation{% endif %}">
   <div class="container nav-inner">
-    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Amirreza Asadi homepage">
+    <a class="brand" href="{% if is_fa %}{{ '/fa/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" aria-label="{% if is_fa %}صفحه اصلی امیررضا اسدی{% else %}Amirreza Asadi homepage{% endif %}">
       <img class="brand-logo" src="{{ '/Logo.png' | relative_url }}" alt="" width="34" height="34" />
-      <span>{{ site.author.name }}</span>
+      <span>{% if is_fa %}{{ site.author.name_fa }}{% else %}{{ site.author.name }}{% endif %}</span>
     </a>
-    <div class="nav-links">
-      {% for item in site.data.navigation %}
-      <a href="{{ item.url | relative_url }}"{% if item.download %} download{% endif %}{% if item.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.label }}</a>
-      {% endfor %}
+    <div class="nav-actions">
+      <div class="nav-links">
+        {% if is_fa %}{% assign nav_items = site.data.navigation_fa %}{% else %}{% assign nav_items = site.data.navigation_en %}{% endif %}
+        {% for item in nav_items %}<a href="{{ item.url | relative_url }}">{{ item.label }}</a>{% endfor %}
+      </div>
+      {% if page.alternate_url %}
+      <a class="language-switch" href="{{ page.alternate_url | relative_url }}" hreflang="{% if is_fa %}en{% else %}fa{% endif %}" lang="{% if is_fa %}en{% else %}fa{% endif %}">{% if is_fa %}English{% else %}فارسی{% endif %}</a>
+      {% elsif is_fa %}
+      <a class="language-switch" href="{{ '/' | relative_url }}" hreflang="en" lang="en">English</a>
+      {% else %}
+      <a class="language-switch" href="{{ '/fa/' | relative_url }}" hreflang="fa" lang="fa">فارسی</a>
+      {% endif %}
     </div>
   </div>
 </nav>
