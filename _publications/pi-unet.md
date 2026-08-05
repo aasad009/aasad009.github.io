@@ -19,6 +19,7 @@ graphical_abstract: /assets/images/physics-informed-inverse-elastography-piunet-
 graphical_abstract_alt: >-
   Selected study figures showing volumetric data generation, the PI-UNet architecture, and voxel-wise brain-tissue mechanical reconstruction.
 og_image: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
+interactive_demo: piunet_convergence
 funding: This work was supported by the National Institutes of Health through NIBIB Trailblazer Award R21EB032187 and NINDS Grant 1R01NS131554-01.
 seo_sections:
   - heading: Physics-informed inverse elastography for voxel-wise tissue property mapping

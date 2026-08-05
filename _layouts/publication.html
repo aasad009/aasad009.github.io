@@ -34,7 +34,7 @@ layout: default
   </div></section>
   {% endif %}
 
-  {% if page.interactive_demo == 'oed_sampling' %}{% include oed-interactive-demo.html %}{% endif %}
+  {% if page.interactive_demo == 'oed_sampling' %}{% include oed-interactive-demo.html %}{% elsif page.interactive_demo == 'piunet_convergence' %}{% include piunet-convergence-demo.html %}{% endif %}
 
   <section><div class="container"><div class="cards">
     <article class="card"><h3>{% if is_fa %}دستاوردهای اصلی{% else %}Key contributions{% endif %}</h3><ul>{% for item in page.contributions %}<li>{{ item }}</li>{% endfor %}</ul></article>

@@ -17,6 +17,7 @@ topic_terms:
   - وارون‌سازی هایپرالاستیک
   - تصویربرداری پزشکی
 og_image: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
+interactive_demo: piunet_convergence
 related_pages:
   - title: مقاله PI-UNet
     url: /fa/publications/pi-unet/

@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   {% endif %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.asset_version }}" />
-  {% if page.layout == 'publication' or page.interactive_demo == 'oed_sampling' %}<link rel="stylesheet" href="{{ '/assets/css/publication.css' | relative_url }}?v={{ site.asset_version }}" />{% endif %}
+  {% if page.layout == 'publication' or page.interactive_demo == 'oed_sampling' or page.interactive_demo == 'piunet_convergence' %}<link rel="stylesheet" href="{{ '/assets/css/publication.css' | relative_url }}?v={{ site.asset_version }}" />{% endif %}
   {% if page.lang == 'fa' %}<link rel="stylesheet" href="{{ '/assets/css/persian.css' | relative_url }}?v={{ site.asset_version }}" />{% endif %}
   {% include structured-data.html %}
 </head>

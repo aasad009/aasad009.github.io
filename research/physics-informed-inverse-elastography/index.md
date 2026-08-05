@@ -17,6 +17,7 @@ topic_terms:
   - Hyperelastic inversion
   - Medical imaging
 og_image: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
+interactive_demo: piunet_convergence
 related_pages:
   - title: PI-UNet publication
     url: /publications/pi-unet/

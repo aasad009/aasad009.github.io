@@ -16,6 +16,7 @@ journal: Annals of Biomedical Engineering
 year: 2026
 doi: 10.1007/s10439-026-04321-4
 graphical_abstract: /assets/images/physics-informed-inverse-elastography-piunet-graphical-abstract.png
+interactive_demo: piunet_convergence
 graphical_abstract_alt: چکیده گرافیکی میدان تغییرشکل حجمی، شبکه PI-UNet با محدودیت تعادل و نقشه‌های وکسل‌به‌وکسل پارامترهای هایپرالاستیک
 funding: این پژوهش با حمایت مؤسسه ملی سلامت آمریکا از طریق جایزه Trailblazer مؤسسه NIBIB با شماره R21EB032187 و گرنت مؤسسه NINDS با شماره 1R01NS131554-01 انجام شده است.
 abstract_html: >-

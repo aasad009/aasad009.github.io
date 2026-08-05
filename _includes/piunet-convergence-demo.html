@@ -1,0 +1,32 @@
+{% assign piunet_demo_fa = false %}{% if page.lang == 'fa' %}{% assign piunet_demo_fa = true %}{% endif %}
+<section class="piunet-demo-section" id="piunet-convergence-demo" aria-labelledby="piunet-demo-title">
+  <div class="container">
+    <header class="piunet-demo-intro">
+      <div>
+        <span class="piunet-demo-eyebrow">{% if piunet_demo_fa %}نمونه تعاملی{% else %}Interactive reconstruction{% endif %}</span>
+        <h2 id="piunet-demo-title">{% if piunet_demo_fa %}تکامل میدان‌های مکانیکی بازسازی‌شده در طول بهینه‌سازی{% else %}Watch voxel-wise material fields emerge during optimization{% endif %}</h2>
+      </div>
+      <p>{% if piunet_demo_fa %}با نوار تکرارها حرکت کنید یا پخش خودکار را فعال کنید تا روند همگرایی پیش‌بینی‌های <span dir="ltr">C10</span>، <span dir="ltr">C01</span> و مدول برشی را با مقدار واقعی مقایسه کنید. برش‌های محوری، کرونال و ساژیتال و نمای سه‌بعدی نیز قابل تنظیم هستند.{% else %}Move through the saved optimization iterations—or press Play—to compare the evolving C10, C01, and shear-modulus predictions with ground truth. The axial, coronal, and sagittal slices and the three-dimensional context are all adjustable.{% endif %}</p>
+    </header>
+
+    <div class="piunet-demo-frame-shell">
+      <iframe
+        class="piunet-demo-frame"
+        src="{{ '/piunet/index.html' | relative_url }}{% if piunet_demo_fa %}?lang=fa{% endif %}"
+        title="{% if piunet_demo_fa %}نمایش تعاملی همگرایی بازسازی وکسل‌به‌وکسل PI-UNet{% else %}Interactive PI-UNet voxel-wise reconstruction convergence viewer{% endif %}"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="piunet-demo-actions">
+      <p>{% if piunet_demo_fa %}برای مقایسه علمی، دامنه رنگ در همه تکرارها بر اساس میدان واقعی ثابت نگه داشته شده است؛ بنابراین اشباع رنگ در تکرارهای اولیه نشان‌دهنده خطای بزرگ پیش‌بینی است، نه تغییر مقیاس نمایش.{% else %}For a consistent scientific comparison, each field uses a fixed ground-truth-based color scale across all iterations. Saturation in early frames therefore represents a large prediction error rather than a changing display scale.{% endif %}</p>
+      <a class="piunet-demo-open" href="{{ '/piunet/index.html' | relative_url }}{% if piunet_demo_fa %}?lang=fa{% endif %}" target="_blank" rel="noopener noreferrer">{% if piunet_demo_fa %}باز کردن نمایش تمام‌صفحه ↗{% else %}Open the full-screen viewer ↗{% endif %}</a>
+    </div>
+
+    <aside class="piunet-demo-takeaway">
+      <strong>{% if piunet_demo_fa %}ارتباط با پژوهش{% else %}Connection to the work{% endif %}</strong>
+      <p>{% if piunet_demo_fa %}این نمایش نشان می‌دهد که شبکه چگونه از یک پیش‌بینی اولیه به نقشه‌های فضایی پارامترهای مونی–ریولین نزدیک می‌شود. تفاوت باقی‌مانده میان پیش‌بینی و مقدار واقعی، ساختار فضایی خطای بازسازی را نیز آشکار می‌کند.{% else %}This viewer exposes the optimization process behind the final reconstruction: the network progresses from its initial estimate toward spatial Mooney–Rivlin parameter maps, while the remaining prediction–ground-truth differences reveal the structure of the reconstruction error.{% endif %}</p>
+    </aside>
+  </div>
+</section>
