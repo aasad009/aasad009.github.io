@@ -75,7 +75,7 @@
         if (x === -spacing) context.moveTo(x, y + offsetY);
         else context.lineTo(x, y + offsetY);
       }
-      context.strokeStyle = "rgba(126, 224, 210, 0.13)";
+      context.strokeStyle = "rgba(14, 119, 113, 0.13)";
       context.stroke();
     }
 
@@ -86,7 +86,7 @@
         if (y === -spacing) context.moveTo(x + offsetX, y);
         else context.lineTo(x + offsetX, y);
       }
-      context.strokeStyle = "rgba(102, 179, 255, 0.11)";
+      context.strokeStyle = "rgba(179, 86, 54, 0.10)";
       context.stroke();
     }
   }
@@ -122,7 +122,7 @@
         else context.lineTo(x, y + offsetY);
       }
 
-      context.strokeStyle = "rgba(126, 224, 210, 0.13)";
+      context.strokeStyle = "rgba(14, 119, 113, 0.13)";
       context.stroke();
     }
 
@@ -143,7 +143,7 @@
         else context.lineTo(x + offsetX, y);
       }
 
-      context.strokeStyle = "rgba(102, 179, 255, 0.11)";
+      context.strokeStyle = "rgba(179, 86, 54, 0.10)";
       context.stroke();
     }
 
