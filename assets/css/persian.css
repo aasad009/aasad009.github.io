@@ -606,3 +606,61 @@ body.lang-fa {
     font-size: 0.82rem;
   }
 }
+
+/* Editorial-theme alignment: text-led, portrait-free homepage hero. */
+.lang-fa h1,
+.lang-fa h2,
+.lang-fa h3,
+.lang-fa .brand {
+  font-family: "Vazirmatn", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+}
+
+.lang-fa .hero { min-height: 690px; }
+
+.lang-fa .hero-content {
+  direction: rtl;
+  display: block;
+  padding: clamp(108px, 12vw, 156px) 0 clamp(88px, 10vw, 128px);
+}
+
+.lang-fa .hero-copy {
+  max-width: 900px;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.lang-fa .hero-copy h1 {
+  max-width: 900px;
+  font-size: clamp(3.15rem, 5.8vw, 5.65rem);
+}
+
+.lang-fa .gradient-text {
+  color: var(--text);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+}
+
+.lang-fa .eyebrow {
+  border-right: 3px solid var(--accent);
+  border-left: 0;
+  padding-right: 14px;
+  color: #4f5b67;
+}
+
+.lang-fa .hero-subtitle { color: #4f5b67; }
+
+.lang-fa .hero-meta span {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.44);
+  color: #4f5b67;
+}
+
+@media (max-width: 900px) {
+  .lang-fa .hero-content { display: block; padding: 92px 0 82px; }
+  .lang-fa .hero-copy { text-align: right; }
+  .lang-fa .eyebrow,
+  .lang-fa .hero-actions,
+  .lang-fa .hero-meta { justify-content: flex-start; }
+  .lang-fa .hero-subtitle { margin-right: 0; margin-left: auto; }
+}
