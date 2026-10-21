@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Three interactive research concepts in computational biomechanics, evolutionary function, and multiscale tissue mechanics by Amirreza Asadi.">
+<title>Research Directions | Amirreza Asadi</title>
+<style>
+:root{--ink:#10263b;--sub:#52697d;--mint:#0a838a;--line:#dce6e9;--soft:#f4f8fa;--navy:#071c2e;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7fafb;color:var(--ink)}a{color:inherit}a:focus-visible{outline:3px solid #0e94a4;outline-offset:4px}
+.top{background:var(--navy);color:#edf7fb;padding:60px max(24px,calc((100vw - 1170px)/2)) 54px}.meta{font-size:11px;text-transform:uppercase;letter-spacing:2.2px;color:#6cd4cb;font-weight:780}.top h1{font-size:clamp(34px,5vw,58px);line-height:1.09;letter-spacing:-1.9px;font-weight:800;max-width:940px;margin:17px 0 14px}.lead{font-size:16px;line-height:1.7;max-width:790px;color:#afc5d5;margin:0 0 20px}.by{color:#87a9b7;font-size:12px;font-weight:600}.by a{color:#b7eff1;text-underline-offset:3px}
+.wrap{max-width:1190px;margin:0 auto;padding:42px 20px 60px}.intro{display:flex;gap:16px;justify-content:space-between;align-items:flex-end;margin:0 0 20px}.intro h2{margin:0;font-size:24px;letter-spacing:-.6px}.intro p{max-width:550px;margin:4px 0 0;font-size:13px;color:var(--sub);line-height:1.6}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{border:1px solid var(--line);border-radius:16px;background:white;overflow:hidden;box-shadow:0 8px 26px #203f5310;display:flex;flex-direction:column;min-width:0}.poster{background:#dcebee;height:213px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.poster img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}.poster::after{content:'';position:absolute;inset:0;box-shadow:inset 0 -28px 30px -30px #23394d38;pointer-events:none}.info{padding:20px 20px 18px;display:flex;flex-direction:column;flex:1}.num{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#108b91;font-weight:850}.info h3{font-size:21px;line-height:1.2;letter-spacing:-.5px;margin:8px 0 11px;min-height:52px}.desc{font-size:13px;line-height:1.65;color:#617487;flex:1;margin:0 0 23px}.btn{display:flex;gap:8px;justify-content:space-between;align-items:center;padding:12px 15px;background:#0b7182;color:white;border-radius:9px;text-decoration:none;font-size:13px;font-weight:750;transition:background .18s}.btn:hover{background:#064e61}.disclaimer{margin:24px 0 0;border-top:1px solid var(--line);padding-top:20px;font-size:12px;line-height:1.65;color:#65798b}.footer{border-top:1px solid var(--line);padding:24px 20px 40px;font-size:12px;color:#738b99;max-width:1190px;margin:auto}.footer a{color:#0a727e;text-decoration:none}
+.figure{width:100%;height:100%;background:linear-gradient(125deg,#0a2335,#112f43);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:25px}.step{height:39px;border-radius:7px;border:1px solid #5ac2c067;color:#dcf9fa;background:#73b4cc16;font-size:12px;font-weight:650;display:flex;align-items:center;justify-content:center;width:92%;max-width:290px}.arrow{width:2px;height:15px;background:#4dc0c0;position:relative}.arrow:after{content:'';position:absolute;bottom:-2px;left:-4px;border-top:6px solid #4dc0c0;border-left:5px solid transparent;border-right:5px solid transparent}
+@media(max-width:930px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.info h3{min-height:0}.top{padding:44px 24px}.intro{display:block}}
+@media(max-width:610px){.cards{grid-template-columns:1fr}.poster{height:230px}.top{padding:37px 20px}.wrap{padding:30px 16px 42px}.info h3{font-size:21px}.top h1{font-size:36px}}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="meta">Computational biomechanics · Interactive research concepts</div>
+<h1>Three directions in evolutionary mechanics.</h1>
+<p class="lead">A connected research program exploring how tissue mechanics shape movement, how external structures could redistribute spinal loads, and how changes in microanatomy might translate into mechanical evolution.</p>
+<p class="by">Amirreza Asadi · UC Riverside · <a href="https://amirreza-asadi.com/">Back to academic website ↗</a></p>
+</header>
+<main class="wrap">
+<div class="intro"><div><h2>Explore the demonstrations</h2><p>Each prototype is interactive and can be opened independently.</p></div></div>
+<div class="cards">
+  <article class="card">
+   <div class="poster"><img src="assets/tissue-to-joint.png" alt="Tissue constitutive-response PCA atlas and articulated joint mobility interface" loading="eager"></div>
+   <div class="info"><span class="num">Research direction 01</span><h3>From Tissue Responses to Joint Mobility</h3><p class="desc">Select mechanical-response points from tissue-specific PCA atlases. The combined properties of skin, capsule, and muscles determine a modeled joint-mobility envelope.</p><a class="btn" href="direction-1/">Explore interactive demo <span aria-hidden="true">↗</span></a></div>
+  </article>
+  <article class="card">
+   <div class="poster"><img src="assets/spine-support.png" alt="Without and with external support lumbar loading comparison" loading="eager"></div>
+   <div class="info"><span class="num">Research direction 02</span><h3>Sitting Upright Is Not Enough!</h3><p class="desc">Compare unsupported and externally supported spinal loading during standing, sitting, and walking with a reduced-order load-transfer model.</p><a class="btn" href="direction-2/">Explore interactive demo <span aria-hidden="true">↗</span></a></div>
+  </article>
+  <article class="card">
+   <div class="poster"><img src="assets/micro-to-macro.png" alt="Microstructure change mapped into a mechanical response PCA trajectory" loading="lazy"></div>
+   <div class="info"><span class="num">Research direction 03</span><h3>From Microstructural to Mechanical Evolution</h3><p class="desc">Translate a sequence of known microstructural states through one candidate transform into predicted macroscopic response fingerprints and their PCA trajectory.</p><a class="btn" href="direction-3/">Explore interactive demo <span aria-hidden="true">↗</span></a></div>
+  </article>
+</div>
+<p class="disclaimer"><b>Scientific scope:</b> These are interactive research proposals, not completed experimental studies. They contain synthetic anatomy or material assumptions, illustrative priors, and reduced-order mechanical models. They do not establish validated predictions of animal mobility, human spinal offloading, or evolutionary change.</p>
+</main>
+<footer class="footer">© 2026 Amirreza Asadi · <a href="https://amirreza-asadi.com/">amirreza-asadi.com</a></footer>
+</body></html>
