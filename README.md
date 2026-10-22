@@ -1,19 +1,16 @@
-# Fossil-focused evolutionary biomechanics — website replacement package
+# Evolutionary biomechanics — three interactive research proposals
 
-**Site destination:** `research-directions/` in your existing academic GitHub Pages repository.
+## Upload to GitHub Pages
 
-Upload the entire included `research-directions/` directory at your repo root. Replace the previous directory; leave your main website `index.html` unchanged. After GitHub Pages deploys, the intended live path is:
+Copy the `research-directions/` folder to your academic website repository's root, replacing the previous folder. This preserves the current public URLs and leaves unrelated website files unchanged. Wait for Pages deployment, then hard refresh.
 
-https://amirreza-asadi.com/research-directions/
+## In the package
 
-The new landing page presents three connected cards **linked by arrows rather than numbers**:
+- `research-directions/index.html`: landing page with supplied pixel-shades portrait, publication evidence, and branching project map.
+- `research-directions/direction-1/`: mechanics-constrained fossil muscle reconstruction demo and revised proposal.
+- `research-directions/direction-2/`: joint-function uncertainty demo and revised proposal.
+- `research-directions/direction-3/`: coupled spine mechanics demo and revised proposal.
+- `word-proposals/`: editable final proposals.
+- `EDITORIAL_AND_SCIENTIFIC_REVIEW.md`: paragraph-by-paragraph editorial rationale and scientific verification notes.
 
-`Fossil skeleton → possible missing muscles → uncertainty-aware joint function → whole-spine evolutionary extension`
-
-- **First:** new fossil muscle anatomy compatibility demo + full proposal (`direction-1/`).
-- **Second:** preserved tissue-response atlas, hip mobility and factorial counterfactual + final joint evolution proposal (`direction-2/`).
-- **Third:** preserved mechanically coupled spine experiment, zero-coupling null, and final spine evolution proposal (`direction-3/`).
-
-Editable copies of all three final Word proposals are in `word-proposals/` for your records (no need to attach them to an email). See `DEMO_REVIEW.md` for a skeptical reviewer-style critique with browser/numeric checks and clear unvalidated assumptions. `qa_results.json` and `review_numeric_results.json` record actual software checks.
-
-**Important:** The demos use synthetic geometry and reduced-order mechanics, not validated extinct-vertebrate reconstructions. No external runtime libraries are needed; HTML loads in modern browsers and references are outbound DOI links.
+All three demos are illustrative, not validated fossil data. Full proposals appear below their respective demos.
