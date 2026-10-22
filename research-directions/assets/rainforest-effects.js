@@ -5,13 +5,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sky = document.getElementById('bird-sky');
   const glass = document.getElementById('rain-glass');
-  const toggle = document.getElementById('sound-toggle');
-  const icon = toggle && toggle.querySelector('.sound-symbol');
-  const label = toggle && toggle.querySelector('.sound-label');
-  const audio = document.getElementById('rainforest-audio');
   let heroVisible = true;
-  let soundWanted = false;
-  let soundDisabledByVisitor = false;
   let birdTimer;
   const birds = new Set();
 
@@ -101,37 +95,4 @@
     document.addEventListener('visibilitychange',()=>{if(!document.hidden)scheduleBird();else clearTimeout(birdTimer);});
   }
 
-  if (audio && toggle && icon && label) {
-    audio.volume = 0.30;
-    const reflect = (playing) => {
-      toggle.setAttribute('aria-pressed',String(playing));
-      icon.textContent = playing ? '♫' : '♪';
-      label.textContent = playing ? 'Rainforest sound on' : 'Play rainforest sound';
-      toggle.setAttribute('aria-label', playing ? 'Mute rainforest sound' : 'Play rainforest sound');
-    };
-    const startAudio = async () => {
-      if(soundDisabledByVisitor) return;
-      soundWanted = true;
-      try {await audio.play();reflect(true);} catch {reflect(false);}
-    };
-    toggle.addEventListener('click', () => {
-      if(!audio.paused){soundDisabledByVisitor=true;soundWanted=false;audio.pause();reflect(false);}
-      else{soundDisabledByVisitor=false;startAudio();}
-    });
-    // Once a visitor interacts, browsers permit the softly mixed soundtrack.
-    const onFirstGesture = (e) => {
-      if(e.target.closest && e.target.closest('#sound-toggle')) return;
-      startAudio();
-    };
-    document.addEventListener('pointerdown',onFirstGesture,{once:true});
-    document.addEventListener('keydown',(e)=>{
-      if(!e.repeat && ['Enter',' ','ArrowDown'].includes(e.key) && !soundWanted && !soundDisabledByVisitor && e.target!==toggle)startAudio();
-    });
-    document.addEventListener('visibilitychange',()=>{
-      if(document.hidden){audio.pause();}
-      else if(soundWanted && !soundDisabledByVisitor){startAudio();}
-    });
-    audio.addEventListener('error',()=>{reflect(false);label.textContent='Audio unavailable';toggle.title='Please check that assets/rainforest-ambience.mp3 was uploaded.';});
-    reflect(false);
-  }
 })();

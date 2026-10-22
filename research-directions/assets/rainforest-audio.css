@@ -1,0 +1,9 @@
+/* One consistent soundtrack toggle across the landing page and proposals. */
+.sound-toggle{font:600 12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.01em;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:rgba(10,48,34,.91);border:1px solid rgba(211,242,207,.56);border-radius:999px;color:#f2faec;padding:10px 14px;min-height:41px;cursor:pointer;box-shadow:0 5px 22px rgba(3,24,14,.26);transition:background .2s,border-color .2s;white-space:nowrap;touch-action:manipulation}
+.sound-toggle:hover{background:rgba(50,102,72,.98);border-color:#e6f8dc}
+.sound-toggle:focus-visible{outline:3px solid #d9f6b4;outline-offset:3px}
+.sound-toggle .sound-symbol{font:18px/1 system-ui,sans-serif}
+.sound-toggle[aria-pressed="true"]{background:rgba(53,95,65,.94)}
+.sound-toggle[data-playback="waiting"]{border-style:dashed;border-color:#e4e7b2}
+.sound-toggle--floating{position:fixed;bottom:max(17px,env(safe-area-inset-bottom));right:max(16px,env(safe-area-inset-right));z-index:700;max-width:calc(100vw - 30px)}
+@media(max-width:600px){.sound-toggle{font-size:11px;padding:9px 12px}.sound-toggle--floating{bottom:max(14px,env(safe-area-inset-bottom));right:12px}}
