@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="410" viewBox="0 0 430 410" role="img" aria-label="A bright green rainforest gecko with adhesive toe pads">
+<defs>
+ <radialGradient id="body" cx="35%" cy="24%" r="82%"><stop stop-color="#d5e49a"/><stop offset=".32" stop-color="#9abe65"/><stop offset=".72" stop-color="#5f9b62"/><stop offset="1" stop-color="#376b54"/></radialGradient>
+ <radialGradient id="head" cx="40%" cy="23%" r="79%"><stop stop-color="#d9eaaa"/><stop offset=".48" stop-color="#8ebd74"/><stop offset="1" stop-color="#4b8564"/></radialGradient>
+ <linearGradient id="limb" x1=".1" y1="0" x2="1" y2="1"><stop stop-color="#8fb778"/><stop offset="1" stop-color="#42775f"/></linearGradient>
+ <radialGradient id="eye" cx="36%" cy="35%" r="66%"><stop stop-color="#f7e8a0"/><stop offset=".61" stop-color="#dfaf53"/><stop offset="1" stop-color="#92703c"/></radialGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur stdDeviation="4"/></filter>
+ <filter id="speckle"><feTurbulence baseFrequency=".07" numOctaves="3" seed="4" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".13"/></feComponentTransfer></filter>
+ </defs>
+ <g opacity=".2" fill="#061c17" filter="url(#shadow)" transform="translate(5 8)"><path d="M230 260 Q300 274 319 336 Q334 383 371 353 Q401 329 371 306" stroke="#203c2c" fill="none" stroke-width="25" stroke-linecap="round"/><ellipse cx="217" cy="206" rx="82" ry="112"/><ellipse cx="210" cy="111" rx="110" ry="75"/></g>
+ <!-- Curled, tapering tail behind the belly -->
+ <path d="M226 269 C281 272 307 286 328 322 C350 357 362 370 383 347 C399 330 391 309 376 304" stroke="#3d7355" stroke-width="24" fill="none" stroke-linecap="round"/>
+ <path d="M228 268 C282 278 314 298 326 326 C338 355 364 362 381 343 C391 328 389 317 377 312" stroke="#90bd70" stroke-width="13" fill="none" stroke-linecap="round"/>
+ <!-- Outstretched limbs -->
+ <path d="M161 157 Q120 141 95 106 L59 77" stroke="#396e54" stroke-width="27" fill="none" stroke-linecap="round"/>
+ <path d="M160 157 Q119 140 91 102 L59 77" stroke="url(#limb)" stroke-width="19" fill="none" stroke-linecap="round"/>
+ <path d="M267 156 Q308 134 329 104 L368 80" stroke="#396e54" stroke-width="27" fill="none" stroke-linecap="round"/>
+ <path d="M266 156 Q308 132 331 104 L370 81" stroke="url(#limb)" stroke-width="19" fill="none" stroke-linecap="round"/>
+ <path d="M167 268 Q126 283 114 326 L82 357" stroke="#396e54" stroke-width="27" fill="none" stroke-linecap="round"/>
+ <path d="M168 268 Q126 279 112 326 L82 357" stroke="url(#limb)" stroke-width="19" fill="none" stroke-linecap="round"/>
+ <path d="M257 266 Q296 272 310 309 L347 340" stroke="#396e54" stroke-width="27" fill="none" stroke-linecap="round"/>
+ <path d="M257 267 Q294 272 310 309 L347 340" stroke="url(#limb)" stroke-width="19" fill="none" stroke-linecap="round"/>
+ <!-- Suction toes with broadened terminal pads -->
+ <g fill="none" stroke="#629c66" stroke-width="8" stroke-linecap="round">
+  <path d="M59 77 Q37 58 21 42 M59 77 Q37 66 12 64 M59 77 Q39 83 16 91 M59 77 Q52 55 45 27"/>
+  <path d="M370 81 Q390 57 407 41 M370 81 Q391 70 418 63 M370 81 Q393 86 415 99 M370 81 Q380 59 383 31"/>
+  <path d="M81 356 Q59 352 37 340 M81 356 Q58 369 33 379 M81 356 Q66 379 61 393 M81 356 Q78 379 89 395"/>
+  <path d="M346 340 Q368 334 391 320 M346 340 Q373 352 401 362 M346 340 Q363 367 363 390 M346 340 Q343 367 337 389"/>
+ </g>
+ <g fill="#c5dfa0" stroke="#3b7155" stroke-width="2.5">
+  <ellipse cx="20" cy="42" rx="11" ry="8" transform="rotate(35 20 42)"/><ellipse cx="12" cy="64" rx="11" ry="8"/><ellipse cx="16" cy="91" rx="11" ry="8" transform="rotate(-18 16 91)"/><ellipse cx="45" cy="27" rx="10" ry="8" transform="rotate(70 45 27)"/>
+  <ellipse cx="408" cy="41" rx="11" ry="8" transform="rotate(-35 408 41)"/><ellipse cx="418" cy="63" rx="11" ry="8"/><ellipse cx="415" cy="99" rx="11" ry="8" transform="rotate(20 415 99)"/><ellipse cx="383" cy="31" rx="10" ry="8" transform="rotate(70 383 31)"/>
+  <ellipse cx="37" cy="340" rx="11" ry="8" transform="rotate(25 37 340)"/><ellipse cx="33" cy="379" rx="11" ry="8" transform="rotate(-19 33 379)"/><ellipse cx="61" cy="393" rx="11" ry="8"/><ellipse cx="89" cy="395" rx="11" ry="8"/>
+  <ellipse cx="391" cy="320" rx="11" ry="8" transform="rotate(-25 391 320)"/><ellipse cx="401" cy="362" rx="11" ry="8" transform="rotate(18 401 362)"/><ellipse cx="363" cy="390" rx="11" ry="8"/><ellipse cx="337" cy="389" rx="11" ry="8"/>
+ </g>
+ <!-- Trunk and pale belly -->
+ <ellipse cx="213" cy="223" rx="74" ry="102" fill="url(#body)" stroke="#356c52" stroke-width="4"/>
+ <ellipse cx="211" cy="226" rx="48" ry="84" fill="#c3d9a0" opacity=".67"/>
+ <path d="M187 158 Q170 209 181 251 M236 162 Q254 211 244 260" stroke="#f0f5c8" stroke-opacity=".55" stroke-width="5" fill="none"/>
+ <!-- Spots -->
+ <g fill="#3d7557" opacity=".5"><circle cx="166" cy="188" r="6"/><circle cx="255" cy="190" r="6"/><circle cx="157" cy="224" r="4"/><circle cx="267" cy="237" r="5"/><circle cx="178" cy="291" r="6"/><circle cx="245" cy="293" r="6"/><circle cx="231" cy="264" r="3"/><circle cx="188" cy="260" r="3"/></g>
+ <!-- Head -->
+ <path d="M108 113 Q101 56 163 42 Q208 18 264 38 Q321 55 318 113 Q322 158 273 168 Q213 185 153 166 Q105 156 108 113Z" fill="url(#head)" stroke="#386f56" stroke-width="4"/>
+ <path d="M113 114 Q119 148 157 161 Q211 176 266 161 Q308 147 315 114" fill="none" stroke="#e1edb4" stroke-width="5" opacity=".62"/>
+ <ellipse cx="169" cy="103" rx="29" ry="34" fill="#426e50"/><ellipse cx="256" cy="103" rx="29" ry="34" fill="#426e50"/>
+ <ellipse cx="169" cy="101" rx="24" ry="29" fill="url(#eye)"/><ellipse cx="256" cy="101" rx="24" ry="29" fill="url(#eye)"/>
+ <ellipse cx="171" cy="102" rx="7.5" ry="25" fill="#203126"/><ellipse cx="254" cy="102" rx="7.5" ry="25" fill="#203126"/>
+ <circle cx="162" cy="88" r="5" fill="#fff9d7" opacity=".87"/><circle cx="246" cy="88" r="5" fill="#fff9d7" opacity=".87"/>
+ <circle cx="192" cy="132" r="3.6" fill="#47745c"/><circle cx="232" cy="132" r="3.6" fill="#47745c"/>
+ <path d="M183 150 Q213 165 241 150" stroke="#3d6e54" stroke-width="4" fill="none" stroke-linecap="round"/>
+ <g opacity=".35" fill="#386b50"><circle cx="145" cy="60" r="5"/><circle cx="160" cy="49" r="3"/><circle cx="276" cy="52" r="5"/><circle cx="293" cy="68" r="3"/><circle cx="210" cy="46" r="4"/><circle cx="223" cy="55" r="3"/></g>
+ <path d="M133 78 Q155 48 185 48" fill="none" stroke="#e3eeb4" stroke-width="7" stroke-linecap="round" opacity=".4"/>
+</svg>

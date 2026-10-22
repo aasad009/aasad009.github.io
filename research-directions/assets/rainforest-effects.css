@@ -1,0 +1,41 @@
+/* Rainforest landing-only atmosphere. These layers never intercept clicks. */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:515px}
+.hero>.wrap{position:relative;z-index:5}
+.hero .rain-glass,.hero .bird-sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero .bird-sky{z-index:1}
+.hero .rain-glass{z-index:2;opacity:.8}
+.hero .rain-glass::before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,transparent 35%,rgba(225,245,222,.033) 62%,transparent 80%);opacity:.8}
+.glass-drop{position:absolute;display:block;width:var(--d);height:calc(var(--d) * 1.24);left:var(--x);top:var(--y);opacity:var(--o);border-radius:51% 49% 51% 49% / 59% 60% 40% 41%;background:radial-gradient(ellipse at 31% 19%,rgba(251,255,250,.72) 0,rgba(210,245,222,.24) 12%,transparent 23%),radial-gradient(ellipse at 66% 76%,rgba(4,35,21,.32),transparent 46%),radial-gradient(ellipse at 54% 45%,rgba(184,242,209,.05),rgba(246,255,250,.1) 76%);border-top:1px solid rgba(244,255,241,.68);border-left:1px solid rgba(239,255,244,.5);border-right:1px solid rgba(6,29,18,.24);border-bottom:1px solid rgba(6,29,18,.32);box-shadow:inset 1px 0 2px rgba(244,255,246,.28),1px 2px 3px rgba(3,20,13,.12);transform:rotate(var(--rot));backdrop-filter:blur(.8px) saturate(1.35)}
+.glass-drop::after{content:"";position:absolute;left:31%;top:14%;width:21%;height:9%;border-radius:100%;background:rgba(255,255,255,.55);transform:rotate(-28deg);filter:blur(.3px)}
+.glass-drop.slow-drip{animation:rain-creep var(--seconds) ease-in-out infinite alternate}
+@keyframes rain-creep{0%,53%{translate:0 0}100%{translate:1px 10px}}
+/* Subtle silhouettes move at randomized heights and speeds behind the text. */
+.flight-bird{position:absolute;top:0;left:0;display:block;color:#dbedca;opacity:0;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(2,21,15,.36));will-change:transform,opacity}
+.flight-bird svg{display:block;width:100%;height:auto;overflow:visible}
+.flight-bird .bird-wing{transform-origin:center center;animation:bird-flap var(--flap,.42s) ease-in-out infinite alternate}
+.flight-bird .bird-wing.left{transform-origin:56px 46px}
+.flight-bird .bird-wing.right{transform-origin:67px 46px;animation-delay:calc(var(--flap,.42s) * -.5)}
+@keyframes bird-flap{from{transform:rotate(-9deg) scaleY(.88)}to{transform:rotate(8deg) scaleY(1.18)}}
+.nav-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap}
+.sound-toggle{font:600 11px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;letter-spacing:.015em;display:inline-flex;align-items:center;gap:8px;background:rgba(9,42,28,.49);border:1px solid rgba(226,240,222,.45);border-radius:999px;color:#f3f9ea;padding:9px 14px;cursor:pointer;transition:background .18s,border-color .18s}
+.sound-toggle:hover{background:rgba(79,118,88,.62);border-color:rgba(237,250,232,.85)}
+.sound-toggle:focus-visible{outline:3px solid #d1eba9;outline-offset:3px}
+.sound-toggle .sound-symbol{font:18px/1 system-ui,sans-serif}
+.sound-toggle[aria-pressed="true"]{background:rgba(78,115,81,.83);border-color:#d1e3b5}
+.hero .nav a:focus-visible{outline:3px solid #d1eba9;outline-offset:4px;border-radius:4px}
+#gecko-visit{position:fixed;z-index:9999;inset:0;pointer-events:none;overflow:hidden;contain:layout}
+#gecko-visit .gecko-picture{position:absolute;left:50%;top:50%;width:clamp(145px,25vw,285px);height:auto;filter:drop-shadow(0 10px 6px rgba(4,34,20,.32)) drop-shadow(0 20px 17px rgba(0,0,0,.22));transform-origin:52% 45%;opacity:0;animation:gecko-glass-visit 2.65s linear .35s 1 both}
+#gecko-visit .glass-ring{position:absolute;left:50%;top:50%;width:170px;height:170px;border:3px solid rgba(221,249,221,.36);border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.45);animation:gecko-contact-ring 2.65s ease-out .35s 1 both}
+@keyframes gecko-glass-visit{
+0%{opacity:0;transform:translate(-50%,95vh) rotate(-25deg) scale(.33)}
+9%{opacity:1}
+34%{opacity:1;transform:translate(-48%,-61%) rotate(8deg) scale(1.11)}
+39%{opacity:1;transform:translate(-50%,-50%) rotate(-3deg) scale(.97)}
+43%{opacity:1;transform:translate(-50%,-50%) rotate(0deg) scale(1)}
+61%{opacity:1;transform:translate(-50%,-50%) rotate(0deg) scale(1)}
+68%{opacity:1;transform:translate(-48%,-58%) rotate(12deg) scale(1.04)}
+100%{opacity:0;transform:translate(110vw,-118vh) rotate(53deg) scale(.36)}
+}
+@keyframes gecko-contact-ring{0%,37%{opacity:0;transform:translate(-50%,-50%) scale(.45)}43%{opacity:.6}56%,100%{opacity:0;transform:translate(-50%,-50%) scale(2.05)}}
+@media(max-width:700px){.hero{min-height:0}.rain-glass{opacity:.45!important}.nav-actions{gap:10px}.sound-toggle{padding:8px 11px;font-size:10px}.hero .nav{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.flight-bird,.glass-drop.slow-drip,#gecko-visit .gecko-picture,#gecko-visit .glass-ring{animation:none!important}.hero .rain-glass{opacity:.38}}
