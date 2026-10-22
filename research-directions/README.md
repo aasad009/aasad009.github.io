@@ -1,46 +1,34 @@
-# Interactive research demos — website upload package
+# Reconstructing the Missing Mechanics of Vertebrate Evolution
 
-## Upload location
+A GitHub Pages–ready, self-contained research showcase for Amirreza Asadi.
 
-Copy the entire `research-directions/` folder into the **root** of the `aasad009/aasad009.github.io` repository (at the same level as the existing `index.html`, `assets/`, and `CNAME`). Do **not** replace the repository root index.html or CNAME.
+## Upload to the existing website
 
-When the site is deployed through GitHub Pages, the intended links are:
+Copy the `research-directions/` folder from this package to the **root** of your `aasad009.github.io` repository. Replace the previous `research-directions/` folder in full. Do **not** replace the root `index.html` for your main academic website.
 
-- Overview: https://amirreza-asadi.com/research-directions/
-- Direction 1: https://amirreza-asadi.com/research-directions/direction-1/
-- Direction 2: https://amirreza-asadi.com/research-directions/direction-2/
-- Direction 3: https://amirreza-asadi.com/research-directions/direction-3/
+After GitHub Pages deploys, the intended overview URL is:
 
-These URLs will only work after upload and a successful GitHub Pages rebuild. The folder can be hosted as normal static files, without adding Jekyll templates, package managers, or dependencies.
+`https://amirreza-asadi.com/research-directions/`
 
-## Files
+## Website sequence
 
-- `index.html` — professional landing page with three cards
-- `direction-1/index.html` — interactive tissue-to-joint atlas (V6)
-- `direction-2/index.html` — fixed, standalone spinal load-transfer demo
-- `direction-3/index.html` — micro-to-macro mechanical evolution demo
-- `assets/` — offline landing-page preview images
+- `/research-directions/direction-1/` — Which Muscles Can Fossil Bones Actually Predict? New 2D synthetic skeletal-to-muscle conditional reconstruction demo; full proposal below.
+- `/research-directions/direction-2/` — When Does Missing Soft Tissue Change an Evolutionary Conclusion? Preserved four-tissue mechanics atlas, joint animation and comparative counterfactual; revised proposal below.
+- `/research-directions/direction-3/` — Did Vertebral Regionalization Change What the Whole Spine Can Do? Coupled regionalized vertebral model, permutation null and zero-coupling test; revised proposal below.
 
-Each demo is a self-contained HTML page with no external scripts or runtime asset fetches. The source files are retained without alterations so existing interaction behavior is preserved.
+The overview page uses **arrows between the three research questions** instead of numerical labels. On narrow screens, arrows point downward.
 
-## Deploy using GitHub web UI
+## Scientific scope
 
-1. Extract the ZIP package locally.
-2. Open [the website repository](https://github.com/aasad009/aasad009.github.io).
-3. Upload the `research-directions` folder and everything inside it into the repository root (preserving the directory structure), then commit the changes. If the web upload UI does not accept folders, upload the files into their corresponding paths or use Git/GitHub Desktop.
-4. Confirm the homepage at `https://amirreza-asadi.com/research-directions/` loads and all three cards open their respective demos.
-5. Share the overview URL in the reply email.
+These are illustrative experiments **not** empirically validated paleontological conclusions. The first uses synthetic bone shapes and two muscle-path proxy families; the second uses a simplified tissue/joint mechanical surrogate; the third uses a dimensionless 10-joint coupled spine model. Inferences about extinct animal muscle volumes, physiology, movement or natural selection require independent measurements, calibration and fossil-specific assumptions.
 
-## Scientific limitations
+## Technical notes
 
-These are proposal illustrations, **not validated biological or clinical predictions**. Tissue priors, anatomical geometry, and population or evolutionary trajectories are not yet independently calibrated to comparative experimental measurements. Direction 2 uses a simplified biomechanical transfer model. Direction 3 uses a candidate micro-to-macro mapping, not a discovered or experimentally established universal law.
+All demos run in standard browsers with inline JavaScript and no external runtime libraries. The proposals are embedded directly under the demo. The standalone Word research proposals are also provided in `word-proposals/` at the package root for editing, but are not needed to view the website. The website’s DOI links require internet access. 
 
-## Attribution and licenses
-
-The site package contains only authored demos and their screenshots/visualizations. It does **not** bundle downloaded anatomical meshes or third-party libraries. If later substituting real specimen anatomy or external model files, preserve their required licenses and attribution.
+See `DEMO_REVIEW.md` for the independent scientific critique and actual browser/numerical checks.
 
 
-## Updated version — proposals embedded beneath demos
-Each `direction-N/index.html` now has its full research proposal (from the latest proposal documents) directly below the interactive demo. No DOCX files or external libraries are required. The research text includes aims, decision gates, and references; source DOCX files are not separately posted on the website.
+### Nature-inspired editorial portrait
 
-**Updating an existing deployment:** replace the `research-directions/` directory in your GitHub Pages repository with the version in this ZIP, preserving its folder structure. The shareable links remain unchanged.
+The landing page contains one optimized personal portrait (`assets/researcher-portrait-forest.webp`) beneath the three research cards. It is labeled as a portrait, not as paleontological fieldwork evidence. All demo computational content and proposal texts are unchanged.

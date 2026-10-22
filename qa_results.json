@@ -1,0 +1,90 @@
+{
+  "desktop_0": {
+    "loaded_from": "in-memory HTML",
+    "title": "Reconstructing Missing Mechanics of Vertebrate Evolution | Amirreza Asadi",
+    "overflow": false,
+    "proposal": false,
+    "errors": [],
+    "cards": 3,
+    "arrows": 2
+  },
+  "desktop_1": {
+    "loaded_from": "in-memory HTML",
+    "title": "Missing Muscles from Fossil Bones | Interactive Research Demo",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "preaccepted": "259 / 320",
+    "allometryaccepted": "320 / 320",
+    "mechanicsaccepted": "259 / 320",
+    "reveal": "Synthetic withheld target: inside central 80% interval [-30, 34]. One mock case cannot validate interval coverage.",
+    "fossiltruth": "Fossil-like specimen has no reference soft-tissue ground truth. No accuracy claim is possible.",
+    "musclechanged": "button active",
+    "proposal_title": "Which Muscles Can Fossil Bones Actually Predict?"
+  },
+  "desktop_2": {
+    "loaded_from": "in-memory HTML",
+    "title": "Joint function under missing soft tissue | Fossil Evolution \u00b7 Amirreza Asadi",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "atlas": "Skin \u00b7 constitutive response atlas",
+    "comparative": 1,
+    "proposal_title": "When Does Missing Soft Tissue Change an Evolutionary Conclusion?"
+  },
+  "desktop_3": {
+    "loaded_from": "in-memory HTML",
+    "title": "Whole-spine regionalization and evolutionary function | Fossil Evolution \u00b7 Amirreza Asadi",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "axis": "lateral",
+    "coupling": "0.7",
+    "zero_coupling": "0",
+    "proposal_title": "Did Vertebral Regionalization Change What the Whole Spine Can Do?"
+  },
+  "mobile_0": {
+    "loaded_from": "in-memory HTML",
+    "title": "Reconstructing Missing Mechanics of Vertebrate Evolution | Amirreza Asadi",
+    "overflow": false,
+    "proposal": false,
+    "errors": [],
+    "cards": 3,
+    "arrows": 2
+  },
+  "mobile_1": {
+    "loaded_from": "in-memory HTML",
+    "title": "Missing Muscles from Fossil Bones | Interactive Research Demo",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "preaccepted": "259 / 320",
+    "allometryaccepted": "320 / 320",
+    "mechanicsaccepted": "259 / 320",
+    "reveal": "Synthetic withheld target: inside central 80% interval [-30, 34]. One mock case cannot validate interval coverage.",
+    "fossiltruth": "Fossil-like specimen has no reference soft-tissue ground truth. No accuracy claim is possible.",
+    "musclechanged": "button active",
+    "proposal_title": "Which Muscles Can Fossil Bones Actually Predict?"
+  },
+  "mobile_2": {
+    "loaded_from": "in-memory HTML",
+    "title": "Joint function under missing soft tissue | Fossil Evolution \u00b7 Amirreza Asadi",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "atlas": "Skin \u00b7 constitutive response atlas",
+    "comparative": 1,
+    "proposal_title": "When Does Missing Soft Tissue Change an Evolutionary Conclusion?"
+  },
+  "mobile_3": {
+    "loaded_from": "in-memory HTML",
+    "title": "Whole-spine regionalization and evolutionary function | Fossil Evolution \u00b7 Amirreza Asadi",
+    "overflow": false,
+    "proposal": true,
+    "errors": [],
+    "axis": "lateral",
+    "coupling": "0.7",
+    "zero_coupling": "0",
+    "proposal_title": "Did Vertebral Regionalization Change What the Whole Spine Can Do?"
+  }
+}

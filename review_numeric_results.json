@@ -1,0 +1,28 @@
+{
+  "muscles_accept_mechanics50": 259,
+  "muscles_accept_mechanics100": 130,
+  "muscles_accept_mechanics0": 316,
+  "muscles_accept_partial": 174,
+  "muscles_accept_allometry": 320,
+  "muscles_accept_bracket": 320,
+  "joint_counterfactual_initial": "Mechanical conclusion reverses when tissue changes. Geometry-only change -2.9 percentage points; combined change +10.4 points.",
+  "joint_difference_before": "54.5% feasible poses",
+  "joint_counterfactual_changed": "Mechanical conclusion reverses when tissue changes. Geometry-only change +3.0 percentage points; combined change -8.5 points.",
+  "joint_difference_after": "35.7% feasible poses",
+  "spine_coupling0p7": "+5.6%",
+  "spine_coupling0": "+0.0%",
+  "spine_natural0": "37.9\u00b0",
+  "spine_null0": "37.9\u00b0",
+  "spine_torsion1p5": "+10.6%",
+  "landing_card_images_loaded": [
+    true,
+    true,
+    true
+  ],
+  "d1_proposal_length": 8074,
+  "d1_proposal_refs": 6,
+  "d2_proposal_length": 7924,
+  "d2_proposal_refs": 6,
+  "d3_proposal_length": 7897,
+  "d3_proposal_refs": 4
+}
