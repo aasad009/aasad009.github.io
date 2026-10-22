@@ -38,3 +38,9 @@ These are proposal illustrations, **not validated biological or clinical predict
 ## Attribution and licenses
 
 The site package contains only authored demos and their screenshots/visualizations. It does **not** bundle downloaded anatomical meshes or third-party libraries. If later substituting real specimen anatomy or external model files, preserve their required licenses and attribution.
+
+
+## Updated version — proposals embedded beneath demos
+Each `direction-N/index.html` now has its full research proposal (from the latest proposal documents) directly below the interactive demo. No DOCX files or external libraries are required. The research text includes aims, decision gates, and references; source DOCX files are not separately posted on the website.
+
+**Updating an existing deployment:** replace the `research-directions/` directory in your GitHub Pages repository with the version in this ZIP, preserving its folder structure. The shareable links remain unchanged.
